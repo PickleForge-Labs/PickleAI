@@ -49,9 +49,9 @@ Instead of relying only on cloud services, PickleAI focuses on running AI locall
 
 1. Download the latest release.
 2. Extract the files.
-3. Run `Agent_Gui.exe`.
-4. Set up your local AI model.
-5. Start using PickleAI.
+3. Run `PickleAI.exe`.
+5. Set up your local AI model.
+6. Start using PickleAI.
 
 ---
 
