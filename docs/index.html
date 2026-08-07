@@ -5,7 +5,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>PickleAI | PickleLabs-Tech</title>
+<title>PickleAI | PickleForge-Labs</title>
 
 <style>
 
@@ -14,11 +14,11 @@
 }
 
 body {
-    margin:0;
-    font-family:"Segoe UI", Arial, sans-serif;
+    margin: 0;
+    font-family: "Segoe UI", Arial, sans-serif;
     background:
-    radial-gradient(circle at top left,#1e3a8a,transparent 35%),
-    radial-gradient(circle at bottom right,#581c87,transparent 35%),
+    radial-gradient(circle at top left,#2563eb,transparent 35%),
+    radial-gradient(circle at bottom right,#7c3aed,transparent 35%),
     #050816;
     color:white;
 }
@@ -35,7 +35,7 @@ body {
 }
 
 .logo {
-    font-size:80px;
+    font-size:90px;
 }
 
 h1 {
@@ -51,14 +51,26 @@ h1 {
     color:#cbd5e1;
 }
 
+.card {
+    background:rgba(15,23,42,.85);
+    padding:30px;
+    margin:25px 0;
+    border-radius:25px;
+    border:1px solid rgba(255,255,255,.1);
+}
+
+h2 {
+    color:#93c5fd;
+}
+
 .button {
     display:inline-block;
-    margin:20px 10px;
-    padding:14px 30px;
-    border-radius:15px;
     background:#2563eb;
     color:white;
+    padding:14px 30px;
+    border-radius:15px;
     text-decoration:none;
+    margin:10px;
     font-weight:bold;
 }
 
@@ -66,33 +78,11 @@ h1 {
     background:#60a5fa;
 }
 
-.card {
-    background:rgba(15,23,42,.8);
-    border:1px solid rgba(255,255,255,.1);
-    border-radius:25px;
-    padding:30px;
-    margin:25px 0;
-    backdrop-filter:blur(15px);
-}
-
-h2 {
-    color:#93c5fd;
-}
-
-.grid {
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-    gap:20px;
-}
-
 .feature {
     background:#111827;
-    padding:25px;
-    border-radius:20px;
-}
-
-.feature h3 {
-    color:#7dd3fc;
+    padding:20px;
+    margin:15px 0;
+    border-radius:18px;
 }
 
 footer {
@@ -114,7 +104,7 @@ footer {
 <section class="hero">
 
 <div class="logo">
-🥒
+🥒🤖
 </div>
 
 <h1>
@@ -126,13 +116,15 @@ The future of personal AI assistants.
 </p>
 
 <p>
-A local Windows AI assistant with memory,
-automation, PC tools, and smart capabilities.
+A local AI desktop assistant built by
+PickleForge-Labs.
 </p>
 
-<a class="button" href="https://github.com/PickleLabs-Tech/PickleAI">
-View GitHub
+
+<a class="button" href="https://github.com/PickleForge-Labs/PickleAI">
+GitHub
 </a>
+
 
 </section>
 
@@ -145,21 +137,26 @@ View GitHub
 </h2>
 
 <p>
-PickleAI is a local-first AI assistant designed to give your computer
-a powerful personal helper while keeping control on your own machine.
+PickleAI is a local-first AI assistant that
+runs on your computer with memory, automation,
+PC tools, and smart features.
 </p>
 
 </div>
 
 
 
-<div class="grid">
+<div class="card">
+
+<h2>
+✨ Features
+</h2>
 
 
 <div class="feature">
 <h3>🧠 Memory</h3>
 <p>
-Remember important information and keep conversations organized.
+Remember information and keep conversations organized.
 </p>
 </div>
 
@@ -167,15 +164,7 @@ Remember important information and keep conversations organized.
 <div class="feature">
 <h3>💻 PC Control</h3>
 <p>
-Launch applications, interact with your system, and automate tasks.
-</p>
-</div>
-
-
-<div class="feature">
-<h3>🌐 Internet Mode</h3>
-<p>
-Detect internet availability and enable online features when connected.
+Open applications, control tools, and automate tasks.
 </p>
 </div>
 
@@ -184,6 +173,14 @@ Detect internet availability and enable online features when connected.
 <h3>⚡ Local AI</h3>
 <p>
 Powered by Ollama and local AI models.
+</p>
+</div>
+
+
+<div class="feature">
+<h3>🌐 Internet Capabilities</h3>
+<p>
+Use online features when an internet connection is available.
 </p>
 </div>
 
@@ -225,8 +222,8 @@ PickleAI is released under the GNU General Public License v3.0.
 
 <footer>
 
-🥒 PickleLabs-Tech<br>
-Building local AI tools and desktop software.
+🥒 PickleAI<br>
+A project by PickleForge-Labs
 
 </footer>
 
