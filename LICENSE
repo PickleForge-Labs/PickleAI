@@ -1,447 +1,185 @@
-# PICKLEAI COMMUNITY AND COMMERCIAL LICENSE
+# PICKLEAI ATTRIBUTION LICENSE
 
-**Version 1.0 — 2026**
+### Version 1.0 — 2026
 
-**Copyright © 2026 Carter Sparks**
-**Project:** PickleAI
+**Copyright © 2026 PickleForge-Labs**
+
+**Official Project:** PickleAI
 **Official Repository:** https://github.com/PickleForge-Labs/PickleAI
 
 ---
 
-## 1. Definitions
+## 1. Permission
 
-### 1.1 “Software”
+Permission is hereby granted, free of charge, to any person obtaining a copy of the PickleAI software and associated source code (the “Software”), to use, copy, modify, merge, publish, distribute, sublicense, and sell copies of the Software, subject to the conditions below.
 
-“Software” means PickleAI, including its source code, scripts, documentation, configuration files, assets, and other materials distributed by Carter Sparks as part of the PickleAI project.
-
-### 1.2 “Original Developer”
-
-“Original Developer” means **Carter Sparks**.
-
-### 1.3 “Official Project”
-
-“Official Project” means the PickleAI project maintained at:
-
-https://github.com/PickleForge-Labs/PickleAI
-
-### 1.4 “Modification”
-
-“Modification” means any alteration, addition, deletion, extension, adaptation, fork, or derivative work based on or incorporating the Software.
-
-### 1.5 “Non-Commercial Use”
-
-“Non-Commercial Use” means use that is not primarily intended to generate revenue, commercial advantage, or monetary compensation.
-
-Examples may include:
-
-* Personal projects
-* Hobby projects
-* Educational projects
-* School projects
-* Research projects
-* Demonstrations
-* Non-profit community projects
-* Personal experimentation
-* Free software projects that do not commercially exploit PickleAI
-
-### 1.6 “Commercial Use”
-
-“Commercial Use” means use primarily intended to generate revenue, commercial advantage, or monetary compensation.
-
-Commercial Use includes, without limitation:
-
-* Selling the Software
-* Selling a Modification
-* Including the Software in a paid product
-* Including the Software in a paid service
-* Offering PickleAI as a paid hosted service
-* Using PickleAI as part of a commercial business operation
-* Commercial redistribution
-* OEM distribution
-* Proprietary enterprise deployment
-* Commercial SaaS use
-* Licensing PickleAI or a Modification to another party for payment
-
----
-
-# 2. Non-Commercial Permission
-
-Subject to the terms of this license, Carter Sparks grants you a worldwide, royalty-free, non-exclusive permission to use the Software for Non-Commercial Use.
-
-For Non-Commercial Use, you may:
-
-1. Use the Software.
-2. Copy the Software.
-3. Study the Software.
-4. Modify the Software.
-5. Fork the Software.
-6. Create derivative works.
-7. Create plugins and extensions.
-8. Create integrations.
-9. Create applications based upon the Software.
-10. Share the Software.
-11. Redistribute the Software.
-12. Redistribute modifications.
-13. Publish forks.
-14. Include the Software in free projects.
-15. Use the Software for education and research.
-16. Experiment with the Software.
-17. Create demonstrations and prototypes.
-
-No licensing fee is required for permitted Non-Commercial Use.
-
----
-
-# 3. Required Attribution
-
-When you distribute, publish, or publicly display a project that incorporates a substantial portion of PickleAI, you must retain attribution to the Original Developer.
-
-The following attribution must be preserved:
-
-**Powered by PickleAI**
-**Copyright © 2026 Carter Sparks**
-**https://github.com/PickleForge-Labs/PickleAI**
-
-The attribution must not be intentionally removed, hidden, or falsely represented as belonging to another person.
-
-Where technically practical, attribution should appear in an appropriate location such as:
-
-* An About page
-* Credits page
-* Documentation
-* Source-code notices
-* Project credits
-* Application information page
-* README
-* Website credits
-
----
-
-# 4. Project-Wide Attribution
-
-If PickleAI is substantially incorporated into a project, the project must clearly identify PickleAI as a component of the project and Carter Sparks as its Original Developer.
-
-Additional authors and contributors may receive their own attribution.
-
-Additional attribution does not replace the required PickleAI attribution.
-
-You may add your own copyright notices to your original modifications.
-
----
-
-# 5. Non-Commercial Redistribution
-
-You may redistribute the Software and your Modifications for Non-Commercial Use.
-
-When redistributing the Software or a substantial Modification, you must:
-
-1. Include this license.
-2. Preserve applicable copyright notices.
-3. Preserve the PickleAI attribution.
-4. Identify substantial modifications where reasonably practical.
-5. Include the official PickleAI repository link.
-
-You may distribute the Software through GitHub, GitLab, SourceForge, personal websites, educational platforms, package repositories, or other distribution mechanisms.
-
----
-
-# 6. Forks
-
-You may create and publish forks of PickleAI for Non-Commercial Use.
-
-A fork may have its own name and branding.
-
-A fork must not falsely claim to be the official PickleAI project.
-
-A fork must preserve the required PickleAI attribution.
-
-The official PickleAI project is:
-
-https://github.com/PickleForge-Labs/PickleAI
-
----
-
-# 7. Modifications
-
-You may modify PickleAI for Non-Commercial Use.
-
-You may add:
-
-* Features
-* Commands
-* Interfaces
-* Plugins
-* Integrations
-* Tools
-* Automation
-* Documentation
-* Bug fixes
-* Performance improvements
-* Compatibility changes
-
-You may distribute those modifications for Non-Commercial Use subject to this license.
-
-You retain copyright in original material that you independently create, while the original PickleAI material remains subject to its applicable copyright.
-
----
-
-# 8. Commercial Use
-
-Commercial Use is **not granted** under this Community License.
-
-If you want to use PickleAI commercially, you must obtain a separate commercial license from Carter Sparks or another party expressly authorized by Carter Sparks.
-
-Commercial Use without authorization constitutes a violation of this license.
-
----
-
-# 9. Commercial Licensing
-
-Carter Sparks may offer separate commercial licenses for PickleAI.
-
-A commercial license may authorize uses that are not permitted by this Community License.
-
-A commercial license may include permission for:
-
-* Commercial use
-* Selling PickleAI
-* Selling modified versions
-* Closed-source modifications
-* Proprietary integrations
-* Enterprise deployments
-* OEM distribution
-* Commercial redistribution
-* SaaS deployments
-* Hosted services
-* Commercial embedding
-* Commercial use of PickleAI branding
-* Removal or modification of attribution requirements
-* Other uses specifically authorized in writing
-
-Commercial licenses may be negotiated individually.
-
-The commercial license fee may be **any amount mutually agreed upon by the parties**, including zero.
-
-Carter Sparks may approve or deny commercial-license requests at his discretion.
-
-A commercial license must be provided in writing to be effective.
-
----
-
-# 10. Commercial Services
-
-Nothing in this license prevents Carter Sparks or PickleForge-Labs from charging for services related to PickleAI.
-
-Such services may include:
-
-* Custom development
-* Custom features
-* Custom integrations
-* Installation
-* Configuration
-* Technical support
-* Priority support
-* Enterprise support
-* Consulting
-* Training
-* Hosting
-* Cloud deployment
-* Managed deployment
-* Maintenance
-* Security assistance
-* Custom builds
-* Enterprise deployment assistance
-
-Payment for a service does not automatically grant commercial rights to the Software.
-
-Additional software rights require a separate written authorization or commercial license.
-
----
-
-# 11. Donations and Sponsorship
-
-Users may voluntarily support PickleAI through:
-
-* Donations
-* Sponsorships
-* Grants
-* Community funding
-* Other voluntary contributions
-
-Donations and sponsorships do not purchase additional rights under this license.
-
----
-
-# 12. Name and Branding
-
-This license does not automatically grant permission to use the PickleAI name, logo, or other project branding in a manner that suggests official endorsement.
-
-You may identify PickleAI as a component of your project where reasonably necessary to provide accurate attribution.
-
-You may not falsely represent a modified version as the official PickleAI release.
-
-You may not falsely claim that Carter Sparks or PickleForge-Labs endorses your project.
-
----
-
-# 13. Contributions
-
-Contributions to PickleAI are welcome.
-
-By submitting a contribution, you represent that:
-
-1. You have the right to submit the contribution.
-2. The contribution does not knowingly violate another person's copyright.
-3. You have disclosed any applicable third-party restrictions of which you are aware.
-
-Unless otherwise agreed in writing, contributions are provided under the licensing terms selected by the PickleAI project for the applicable contribution.
-
----
-
-# 14. Third-Party Software
-
-PickleAI may contain or interact with software, libraries, models, APIs, assets, or other materials distributed under separate licenses.
-
-Those third-party licenses remain applicable to their respective materials.
-
-This license does not grant rights that Carter Sparks does not possess.
-
-Users are responsible for complying with applicable third-party licenses.
-
----
-
-# 15. Security and Responsible Use
-
-PickleAI is provided as a general-purpose software project.
-
-You are responsible for using the Software lawfully and responsibly.
-
-Nothing in this license grants permission to violate applicable law or the rights of others.
-
----
-
-# 16. Updates and Versions
-
-Carter Sparks may release new versions of PickleAI at any time.
-
-Carter Sparks may discontinue development, maintenance, or support for any version.
-
-Older versions may continue to be used according to the license applicable to those versions, unless otherwise permitted or restricted by applicable law.
-
-Access to separately operated PickleAI services may have additional terms.
-
----
-
-# 17. License Violations and Enforcement
-
-Use of PickleAI must comply with this license.
-
-Unauthorized Commercial Use, removal or intentional concealment of required attribution, unauthorized redistribution, or other material violations may result in termination of the permissions granted under this license.
-
-Upon termination, you must cease activities that are no longer authorized by this license, subject to rights that cannot legally be terminated.
-
-Carter Sparks reserves all rights and remedies available under applicable law, including the right to seek appropriate legal relief for violations of this license.
-
-Nothing in this section creates a criminal penalty or changes the laws applicable to the use of PickleAI.
-
----
-
-# 18. No Warranty
-
-THE SOFTWARE IS PROVIDED **“AS IS”**, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW.
-
-CARTER SPARKS AND PICKLEFORGE-LABS DISCLAIM ALL WARRANTIES, INCLUDING WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, TITLE, AND NON-INFRINGEMENT, TO THE EXTENT PERMITTED BY LAW.
-
----
-
-# 19. Limitation of Liability
-
-TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, CARTER SPARKS AND PICKLEFORGE-LABS SHALL NOT BE LIABLE FOR ANY INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL, EXEMPLARY, OR OTHER DAMAGES ARISING FROM OR RELATING TO THE SOFTWARE OR ITS USE.
-
-THIS INCLUDES, WITHOUT LIMITATION, LOSS OF DATA, LOSS OF PROFITS, LOSS OF BUSINESS, SYSTEM FAILURE, OR OTHER DAMAGES.
-
----
-
-# 20. Copyright
-
-Copyright in the original PickleAI Software remains with:
-
-**Carter Sparks**
-
-Copyright © 2026 Carter Sparks.
-
-This license does not transfer ownership of the original PickleAI source code.
-
-Copyright in independently created Modifications may belong to their respective authors, subject to the rights granted by this license.
-
----
-
-# 21. No Transfer of Ownership
-
-Receiving, downloading, copying, modifying, or redistributing PickleAI does not transfer ownership of the Software to you.
-
-You receive only the permissions expressly granted by this license.
-
----
-
-# 22. Entire Agreement
-
-This license represents the terms governing the use of PickleAI under the PickleAI Community License.
-
-If any provision is determined to be unenforceable, the remaining provisions shall remain in effect to the maximum extent permitted by law.
-
----
-
-# 23. Contact and Commercial Licensing
-
-For commercial licensing, enterprise arrangements, custom development, or other licensing inquiries, contact the PickleAI project owner through the official project repository.
-
-**Official Repository:**
-https://github.com/PickleForge-Labs/PickleAI
-
-**Original Developer:**
-Carter Sparks
-
----
-
-# 24. License Summary
-
-### Non-Commercial Users
+This license permits both **commercial and non-commercial use**.
 
 You may:
 
-**✓ Use**
-**✓ Copy**
-**✓ Modify**
-**✓ Fork**
-**✓ Study**
-**✓ Share**
-**✓ Redistribute**
-**✓ Build projects**
-**✓ Create plugins**
-**✓ Create integrations**
-**✓ Create educational projects**
-**✓ Create research projects**
-
-Provided that you follow this license and preserve the required attribution.
-
-### Commercial Users
-
-Commercial use requires:
-
-**→ A separate commercial license**
-
-Commercial terms and pricing may be negotiated individually.
-
-### Required Credit
-
-**Powered by PickleAI**
-**Copyright © 2026 Carter Sparks**
-**https://github.com/PickleForge-Labs/PickleAI**
+* Use PickleAI personally or commercially.
+* Copy PickleAI.
+* Modify PickleAI.
+* Fork PickleAI.
+* Redistribute PickleAI.
+* Create derivative works.
+* Include PickleAI in larger projects.
+* Sell software containing PickleAI.
+* Use PickleAI in commercial products and services.
+* Create proprietary applications incorporating PickleAI.
 
 ---
 
-**PickleAI Community and Commercial License v1.0**
-**Copyright © 2026 Carter Sparks**
-**PickleForge-Labs**
+## 2. Required PickleAI Attribution
+
+As a condition of exercising the permissions granted by this license, you must preserve attribution to PickleAI when distributing the Software or a substantial derivative of it.
+
+The following attribution must be included in an appropriate location such as the project's README, documentation, credits, About page, or other attribution section:
+
+> **Powered by PickleAI**
+> **https://github.com/PickleForge-Labs/PickleAI**
+
+The PickleAI attribution must not be intentionally removed, concealed, or falsely represented as belonging to another project.
+
+---
+
+## 3. Source-Code Attribution
+
+When distributing source code containing or derived from PickleAI, the following notice must remain with the applicable source code or accompanying documentation:
+
+> **PickleAI**
+> **https://github.com/PickleForge-Labs/PickleAI**
+
+Existing copyright and license notices must also be preserved.
+
+---
+
+## 4. Modified Versions
+
+You may modify PickleAI and distribute modified versions.
+
+Modified versions must not falsely claim to be the official PickleAI release.
+
+If your version is substantially modified, clearly identify it as a modified version or fork where reasonably practical.
+
+You may add your own copyright notices and attribution for your modifications.
+
+Such additional attribution does not replace the required PickleAI attribution.
+
+---
+
+## 5. Commercial Use
+
+Commercial use is expressly permitted.
+
+You may:
+
+* Sell applications containing PickleAI.
+* Sell modified versions.
+* Charge for products containing PickleAI.
+* Use PickleAI in commercial services.
+* Use PickleAI in business operations.
+* Include PickleAI in proprietary software.
+* Charge customers for access to software containing PickleAI.
+
+No separate commercial license or payment to PickleForge-Labs is required solely because you are making commercial use of the Software.
+
+The required PickleAI attribution still applies.
+
+---
+
+## 6. Larger Works
+
+You may combine PickleAI with other software, including proprietary or closed-source software.
+
+This license does not require unrelated code in a larger work to be released under this license.
+
+The required PickleAI attribution must remain associated with the use of PickleAI.
+
+---
+
+## 7. No Trademark License
+
+This license does not grant permission to use PickleAI trademarks, logos, or branding in a manner that falsely suggests endorsement, sponsorship, or official affiliation.
+
+You may accurately identify PickleAI as software used by or included in your project.
+
+---
+
+## 8. Contributions
+
+Contributors retain copyright in their original contributions unless they explicitly transfer those rights.
+
+Contributors may add their own copyright notices.
+
+Contributions included in official PickleAI distributions are subject to the licensing terms applicable to those contributions.
+
+---
+
+## 9. Third-Party Software
+
+This license applies only to material for which PickleForge-Labs has the authority to grant these rights.
+
+Third-party libraries, software, models, assets, and other components may be subject to separate licenses.
+
+You are responsible for complying with applicable third-party licenses.
+
+---
+
+## 10. No Warranty
+
+THE SOFTWARE IS PROVIDED **“AS IS”**, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, AND NON-INFRINGEMENT, TO THE MAXIMUM EXTENT PERMITTED BY LAW.
+
+---
+
+## 11. Limitation of Liability
+
+TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, PICKLEFORGE-LABS AND THE CONTRIBUTORS SHALL NOT BE LIABLE FOR ANY CLAIM, DAMAGES, OR OTHER LIABILITY ARISING FROM, OUT OF, OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+---
+
+## 12. License Violations
+
+Failure to comply with the required attribution terms terminates the permissions granted under this license.
+
+Upon termination, you must cease uses that are no longer authorized by this license.
+
+Nothing in this section prevents the copyright holder from pursuing remedies available under applicable law.
+
+---
+
+## 13. Copyright
+
+Copyright © 2026 **PickleForge-Labs**.
+
+All rights not expressly granted by this license are reserved.
+
+---
+
+## 14. Official Project
+
+The official PickleAI project is:
+
+**PickleAI**
 **https://github.com/PickleForge-Labs/PickleAI**
+
+A fork, derivative work, or third-party distribution is not automatically an official PickleAI release.
+
+---
+
+## 15. Complete License
+
+By using, modifying, distributing, or commercially exploiting the Software, you agree to comply with the terms of this license.
+
+If any provision of this license is found unenforceable, the remaining provisions remain in effect to the maximum extent permitted by law.
+
+---
+
+# REQUIRED ATTRIBUTION
+
+When applicable under this license, retain:
+
+**Powered by PickleAI**
+**https://github.com/PickleForge-Labs/PickleAI**
+
+**Copyright © 2026 PickleForge-Labs**
