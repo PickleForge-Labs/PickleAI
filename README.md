@@ -82,4 +82,5 @@ Try it, share your experience, and help improve the project.
 
 ---
 Copyright (C) 2026 PickleForge-Labs
+
 Licensed under GPLv3
