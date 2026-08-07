@@ -1,51 +1,82 @@
 # 🥒 PickleAI
 
-## The future of personal AI assistants.
+> Your local AI desktop assistant powered by Ollama.
 
-PickleAI is a local AI desktop assistant designed to bring smart automation, memory, and PC control directly to your Windows computer.
+## 🚀 Download PickleAI
 
-Powered by Ollama, PickleAI focuses on a private, customizable AI experience that runs locally.
+Get the latest version and start using your own AI assistant on your computer.
 
----
-
-# ✨ Features
-
-## 🤖 Local AI Brain
-- Runs with local AI models through Ollama
-- Private conversations
-- No required cloud AI service
-- Customizable assistant behavior
-
-## 🧠 Memory System
-- Long-term memory
-- Save important information
-- Recall previous conversations
-- SQLite-based storage
-
-## 💻 PC Control
-- Open applications
-- Search installed programs
-- Control Windows features
-- System information tools
-
-## 🌐 Internet Mode
-- Detect internet availability
-- Enable online capabilities when connected
-- Use browser search features
-- Continue working offline
-
-## 📊 System Monitoring
-- CPU usage
-- RAM usage
-- Disk information
-- Windows status
+**Download PickleAI and try it today.**
 
 ---
 
-# 🖥️ Requirements
+## ⭐ Support PickleAI
 
-- Windows 10/11
-- Python 3.x
-- Ollama
+If you enjoy PickleAI:
 
-Recommended model:
+* ⭐ Star the repository
+* 📢 Share it with others
+* 💬 Give feedback
+* 🐛 Report bugs
+* 💡 Suggest new features
+
+Every star helps more people discover the project.
+
+---
+
+## 🤖 What is PickleAI?
+
+PickleAI is an open-source local AI desktop assistant designed to give users a private, customizable AI experience.
+
+Instead of relying only on cloud services, PickleAI focuses on running AI locally while giving users more control over their tools and workflows.
+
+---
+
+## ✨ Features
+
+* 🤖 Local AI assistant
+* 🧠 AI conversations
+* 🔒 Privacy-focused design
+* 🖥️ Desktop application
+* ⚡ Fast local processing
+* 🔧 Automation tools
+* 🎛️ Customizable workflows
+* 🌱 Open-source development
+
+---
+
+## 🚀 Quick Start
+
+1. Download the latest release.
+2. Extract the files.
+3. Run `PickleAI.exe`.
+4. Set up your local AI model.
+5. Start using PickleAI.
+
+---
+
+## 📦 Requirements
+
+* Windows
+* Ollama
+* Compatible AI model
+* System resources suitable for your model
+
+---
+
+## 🛠️ Roadmap
+
+Future improvements may include:
+
+* More AI features
+* Better automation
+* More customization
+* Improved user experience
+
+---
+
+## 🤝 Community
+
+Feedback from users helps shape PickleAI.
+
+Try it, share your experience, and help improve the project.
