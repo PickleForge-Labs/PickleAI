@@ -1,6 +1,6 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,97 +9,102 @@
 
 <style>
 
-* {
-    box-sizing: border-box;
+*{
+box-sizing:border-box;
 }
 
-body {
-    margin: 0;
-    font-family: "Segoe UI", Arial, sans-serif;
-    background:
-    radial-gradient(circle at top left,#2563eb,transparent 35%),
-    radial-gradient(circle at bottom right,#7c3aed,transparent 35%),
-    #050816;
-    color:white;
+body{
+margin:0;
+font-family:"Segoe UI",Arial,sans-serif;
+background:
+radial-gradient(circle at top left,#2563eb,transparent 35%),
+radial-gradient(circle at bottom right,#7c3aed,transparent 35%),
+#050816;
+color:white;
 }
 
-.container {
-    max-width:1000px;
-    margin:auto;
-    padding:40px 20px;
+.container{
+max-width:1100px;
+margin:auto;
+padding:40px 20px;
 }
 
-.hero {
-    text-align:center;
-    padding:80px 20px;
+.hero{
+text-align:center;
+padding:90px 20px;
 }
 
-.logo {
-    font-size:90px;
+.logo{
+font-size:100px;
 }
 
-h1 {
-    font-size:64px;
-    margin:10px;
-    background:linear-gradient(90deg,#60a5fa,#a78bfa);
-    -webkit-background-clip:text;
-    color:transparent;
+h1{
+font-size:72px;
+margin:10px;
+background:linear-gradient(90deg,#60a5fa,#c084fc);
+-webkit-background-clip:text;
+color:transparent;
 }
 
-.subtitle {
-    font-size:24px;
-    color:#cbd5e1;
+.subtitle{
+font-size:28px;
+color:#cbd5e1;
 }
 
-.card {
-    background:rgba(15,23,42,.85);
-    padding:30px;
-    margin:25px 0;
-    border-radius:25px;
-    border:1px solid rgba(255,255,255,.1);
+.button{
+display:inline-block;
+background:#2563eb;
+color:white;
+padding:16px 35px;
+border-radius:18px;
+text-decoration:none;
+margin:10px;
+font-weight:bold;
 }
 
-h2 {
-    color:#93c5fd;
+.button:hover{
+background:#60a5fa;
 }
 
-.button {
-    display:inline-block;
-    background:#2563eb;
-    color:white;
-    padding:14px 30px;
-    border-radius:15px;
-    text-decoration:none;
-    margin:10px;
-    font-weight:bold;
+.card{
+background:rgba(15,23,42,.9);
+padding:35px;
+margin:30px 0;
+border-radius:28px;
+border:1px solid rgba(255,255,255,.1);
 }
 
-.button:hover {
-    background:#60a5fa;
+h2{
+color:#93c5fd;
+font-size:32px;
 }
 
-.feature {
-    background:#111827;
-    padding:20px;
-    margin:15px 0;
-    border-radius:18px;
+.feature{
+background:#111827;
+padding:22px;
+margin:15px 0;
+border-radius:20px;
 }
 
-footer {
-    text-align:center;
-    padding:40px;
-    color:#94a3b8;
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:20px;
+}
+
+footer{
+text-align:center;
+padding:50px;
+color:#94a3b8;
 }
 
 </style>
 
 </head>
 
-
 <body>
 
 <div class="container">
-
 
 <section class="hero">
 
@@ -107,93 +112,102 @@ footer {
 🥒🤖
 </div>
 
-<h1>
-PickleAI
-</h1>
+<h1>PickleAI</h1>
 
 <p class="subtitle">
-The future of personal AI assistants.
+Your personal local AI desktop assistant.
 </p>
 
 <p>
-A local AI desktop assistant built by
-PickleForge-Labs.
+Built by PickleForge-Labs.
+Private, customizable, and powered by local AI.
 </p>
 
-
 <a class="button" href="https://github.com/PickleForge-Labs/PickleAI">
-GitHub
+⭐ GitHub
 </a>
 
+<a class="button" href="https://github.com/PickleForge-Labs/PickleAI/releases">
+⬇ Download
+</a>
 
 </section>
 
 
-
 <div class="card">
 
-<h2>
-🤖 About PickleAI
-</h2>
+<h2>🤖 What is PickleAI?</h2>
 
 <p>
-PickleAI is a local-first AI assistant that
-runs on your computer with memory, automation,
-PC tools, and smart features.
+PickleAI is a local AI assistant designed to bring
+powerful AI tools directly to your desktop.
+</p>
+
+<p>
+It combines AI chat, memory, automation,
+and computer tools into one personal assistant.
 </p>
 
 </div>
 
 
-
 <div class="card">
 
-<h2>
-✨ Features
-</h2>
+<h2>✨ Features</h2>
 
+<div class="grid">
 
 <div class="feature">
 <h3>🧠 Memory</h3>
-<p>
-Remember information and keep conversations organized.
-</p>
+<p>Keep conversations and information organized.</p>
 </div>
-
 
 <div class="feature">
 <h3>💻 PC Control</h3>
-<p>
-Open applications, control tools, and automate tasks.
-</p>
+<p>Interact with applications and automate tasks.</p>
 </div>
-
 
 <div class="feature">
 <h3>⚡ Local AI</h3>
-<p>
-Powered by Ollama and local AI models.
-</p>
+<p>Run AI models locally with Ollama.</p>
 </div>
-
 
 <div class="feature">
-<h3>🌐 Internet Capabilities</h3>
-<p>
-Use online features when an internet connection is available.
-</p>
+<h3>🔒 Privacy Focused</h3>
+<p>Your AI experience stays under your control.</p>
 </div>
 
+<div class="feature">
+<h3>🌐 Smart Tools</h3>
+<p>Use online features when available.</p>
+</div>
+
+<div class="feature">
+<h3>🛠 Customizable</h3>
+<p>Built to grow with new features.</p>
+</div>
 
 </div>
 
+</div>
 
 
 <div class="card">
 
-<h2>
-🛠 Technology
-</h2>
+<h2>🚀 Why PickleAI?</h2>
+
+<p>
+Many AI assistants depend completely on cloud services.
+PickleAI focuses on giving users more control,
+flexibility, and personalization.
+</p>
+
+</div>
+
+
+<div class="card">
+
+<h2>🛠 Technology</h2>
 
 <p>
 Python • PyWebView • SQLite • Ollama • Qwen2.5
@@ -202,12 +216,36 @@ Python • PyWebView • SQLite • Ollama • Qwen2.5
 </div>
 
 
+<div class="card">
+
+<h2>📈 Roadmap</h2>
+
+<ul>
+<li>More AI features</li>
+<li>Improved automation</li>
+<li>Better user interface</li>
+<li>More integrations</li>
+</ul>
+
+</div>
+
 
 <div class="card">
 
-<h2>
-📜 Open Source
-</h2>
+<h2>⭐ Support PickleAI</h2>
+
+<p>
+Like the project?
+Star the GitHub repository, download PickleAI,
+and share it with others.
+</p>
+
+</div>
+
+
+<div class="card">
+
+<h2>📜 Open Source</h2>
 
 <p>
 PickleAI is released under the GNU General Public License v3.0.
@@ -216,18 +254,14 @@ PickleAI is released under the GNU General Public License v3.0.
 </div>
 
 
-
 </div>
 
 
 <footer>
-
 🥒 PickleAI<br>
 A project by PickleForge-Labs
-
 </footer>
 
-
 </body>
-
 </html>
+```
