@@ -1,0 +1,1383 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<meta charset="UTF-8">
+
+<title>PickleAI</title>
+
+
+<style>
+
+*{
+    box-sizing:border-box;
+}
+
+
+:root{
+
+    --bg:#050816;
+    --panel:rgba(15,23,42,.82);
+    --card:rgba(30,41,59,.75);
+    --line:rgba(255,255,255,.08);
+    --blue:#3b82f6;
+    --text:#e5e7eb;
+
+}
+
+
+body{
+
+    margin:0;
+    height:100vh;
+    overflow:hidden;
+
+    font-family:
+    Segoe UI,
+    Arial,
+    sans-serif;
+
+    background:
+    radial-gradient(
+        circle at top left,
+        #1e3a8a,
+        transparent 35%
+    ),
+    radial-gradient(
+        circle at bottom right,
+        #581c87,
+        transparent 35%
+    ),
+    var(--bg);
+
+    color:var(--text);
+
+}
+
+
+
+.app{
+
+    display:flex;
+    height:100vh;
+
+}
+
+
+
+/* =====================
+SIDEBAR
+===================== */
+
+
+.sidebar{
+
+    width:90px;
+
+    padding:20px 12px;
+
+    background:
+    rgba(15,23,42,.75);
+
+    border-right:
+    1px solid var(--line);
+
+    backdrop-filter:
+    blur(25px);
+
+    transition:.3s;
+
+    overflow:hidden;
+
+}
+
+
+.sidebar:hover{
+
+    width:240px;
+
+}
+
+
+
+.brand{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:15px;
+
+    margin-bottom:35px;
+
+}
+
+
+
+.logo{
+
+    font-size:38px;
+
+}
+
+
+
+.brand span{
+
+    font-size:26px;
+
+    font-weight:800;
+
+    opacity:0;
+
+    transition:.3s;
+
+}
+
+
+
+.sidebar:hover .brand span{
+
+    opacity:1;
+
+}
+
+
+
+.nav{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:10px;
+
+}
+
+
+
+.nav button{
+
+    height:55px;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:18px;
+
+    border:0;
+
+    border-radius:16px;
+
+    background:none;
+
+    color:white;
+
+    cursor:pointer;
+
+    font-size:16px;
+
+    padding:12px;
+
+}
+
+
+
+.nav button:hover{
+
+    background:
+    rgba(59,130,246,.25);
+
+}
+
+
+
+.icon{
+
+    font-size:22px;
+
+    min-width:30px;
+
+}
+
+
+
+.label{
+
+    opacity:0;
+
+    transition:.3s;
+
+}
+
+
+
+.sidebar:hover .label{
+
+    opacity:1;
+
+}
+
+
+
+
+
+/* =====================
+MAIN
+===================== */
+
+
+.main{
+
+    flex:1;
+
+    display:grid;
+
+    grid-template-columns:
+    1fr 300px;
+
+    gap:20px;
+
+    padding:25px;
+
+}
+
+
+
+.panel{
+
+    background:
+    var(--panel);
+
+    border:
+    1px solid var(--line);
+
+    border-radius:28px;
+
+    padding:25px;
+
+    backdrop-filter:
+    blur(25px);
+
+}
+
+
+
+.content{
+
+    height:
+    calc(100vh - 50px);
+
+    overflow:hidden;
+
+}
+
+
+
+.side{
+
+    height:
+    calc(100vh - 50px);
+
+}
+
+
+
+
+
+.tab{
+
+    display:none;
+
+    height:100%;
+
+}
+
+
+
+.tab.active{
+
+    display:block;
+
+}
+
+
+
+.title{
+
+    font-size:32px;
+
+    font-weight:800;
+
+}
+
+
+
+.subtitle{
+
+    color:#94a3b8;
+
+    margin-bottom:20px;
+
+}
+
+
+
+.card{
+
+    background:
+    var(--card);
+
+    border:
+    1px solid var(--line);
+
+    border-radius:20px;
+
+    padding:18px;
+
+    margin-bottom:15px;
+
+}
+
+
+
+.card h3{
+
+    margin-top:0;
+
+}
+
+
+
+.button{
+
+    background:
+    var(--blue);
+
+    border:0;
+
+    color:white;
+
+    padding:12px 18px;
+
+    border-radius:12px;
+
+    cursor:pointer;
+
+}
+
+
+
+.button:hover{
+
+    background:#60a5fa;
+
+}
+
+
+
+
+
+/* =====================
+CHAT
+===================== */
+
+
+.chat-box{
+
+    height:
+    calc(100% - 120px);
+
+    overflow:auto;
+
+    padding:10px;
+
+}
+
+
+
+.message{
+
+    padding:14px;
+
+    margin:10px;
+
+    border-radius:18px;
+
+    max-width:75%;
+
+}
+
+
+
+.ai{
+
+    background:#172554;
+
+}
+
+
+
+.user{
+
+    background:#2563eb;
+
+    margin-left:auto;
+
+}
+
+
+
+.input-area{
+
+    display:flex;
+
+    gap:10px;
+
+}
+
+
+
+#chatInput{
+
+    flex:1;
+
+    padding:15px;
+
+    border-radius:15px;
+
+    border:1px solid var(--line);
+
+    background:#020617;
+
+    color:white;
+
+    font-size:16px;
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<div class="app">
+
+
+<div class="sidebar">
+
+
+<div class="brand">
+
+<div class="logo">
+🥒
+</div>
+
+<span>
+PickleAI
+</span>
+
+</div>
+
+
+
+<div class="nav">
+
+
+<button onclick="openTab('chat')">
+
+<div class="icon">
+💬
+</div>
+
+<div class="label">
+Chat
+</div>
+
+</button>
+
+
+
+<button onclick="openTab('brain')">
+
+<div class="icon">
+🧠
+</div>
+
+<div class="label">
+Brain
+</div>
+
+</button>
+
+
+
+<button onclick="openTab('memory')">
+
+<div class="icon">
+◇
+</div>
+
+<div class="label">
+Memory
+</div>
+
+</button>
+
+
+
+<button onclick="openTab('settings')">
+
+<div class="icon">
+⚙
+</div>
+
+<div class="label">
+Settings
+</div>
+
+</button>
+
+
+</div>
+
+
+</div>
+
+
+
+<div class="main">
+
+
+<div class="panel content">
+
+<!-- =====================
+CHAT TAB
+===================== -->
+
+<div id="chat" class="tab active">
+
+<div class="title">
+PickleAI
+</div>
+
+<div class="subtitle">
+Local AI Assistant
+</div>
+
+
+<div id="messages" class="chat-box">
+
+<div class="message ai">
+PickleAI online.
+</div>
+
+</div>
+
+
+
+<div class="input-area">
+
+<input
+id="chatInput"
+placeholder="Ask PickleAI..."
+>
+
+
+<button
+class="button"
+onclick="sendMessage()">
+
+Send
+
+</button>
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+<!-- =====================
+BRAIN TAB
+===================== -->
+
+<div id="brain" class="tab">
+
+
+<div class="title">
+Brain
+</div>
+
+
+<div class="subtitle">
+AI information
+</div>
+
+
+
+<div class="card">
+
+<h3>
+Model
+</h3>
+
+<div id="modelName">
+qwen2.5:3b-instruct
+</div>
+
+</div>
+
+
+
+
+<div class="card">
+
+<h3>
+Internet Mode
+</h3>
+
+<div id="internetStatus">
+
+Checking...
+
+</div>
+
+
+</div>
+
+
+
+
+<div class="card">
+
+<h3>
+PC Control
+</h3>
+
+<div>
+
+✓ Windows Control
+
+<br>
+
+✓ App Launcher
+
+<br>
+
+✓ Window Manager
+
+</div>
+
+
+</div>
+
+
+
+<div class="card">
+
+<h3>
+Quick Commands
+</h3>
+
+
+Examples:
+
+<br><br>
+
+open edge
+
+<br>
+
+search google cats
+
+<br>
+
+show windows
+
+<br>
+
+arrange windows
+
+<br>
+
+system status
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+<!-- =====================
+MEMORY TAB
+===================== -->
+
+
+<div id="memory" class="tab">
+
+
+<div class="title">
+Memory
+</div>
+
+
+<div class="subtitle">
+PickleAI long term memory
+</div>
+
+
+
+<div class="card">
+
+
+<h3>
+Saved Memories
+</h3>
+
+
+<div id="memoryList">
+
+Loading...
+
+</div>
+
+
+</div>
+
+
+
+
+<div class="card">
+
+
+<h3>
+Saved Chats
+</h3>
+
+
+<div id="chatList">
+
+Loading...
+
+</div>
+
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+<!-- =====================
+SETTINGS TAB
+===================== -->
+
+
+<div id="settings" class="tab">
+
+
+<div class="title">
+Settings
+</div>
+
+
+<div class="subtitle">
+PickleAI options
+</div>
+
+
+
+
+<div class="card">
+
+
+<h3>
+Appearance
+</h3>
+
+
+<button
+class="button">
+
+Dark Mode
+
+</button>
+
+
+</div>
+
+
+
+
+
+<div class="card">
+
+
+<h3>
+Chat
+
+</h3>
+
+
+<button
+class="button"
+onclick="clearChat()">
+
+Clear Chat
+
+</button>
+
+
+</div>
+
+
+
+
+
+<div class="card">
+
+
+<h3>
+Safety
+
+</h3>
+
+
+<div>
+
+✓ Confirm dangerous actions
+
+<br>
+
+✓ Local AI first
+
+<br>
+
+✓ No background control
+
+</div>
+
+
+</div>
+
+
+
+</div>
+
+
+
+</div>
+
+
+
+
+<!-- =====================
+RIGHT PANEL
+===================== -->
+
+
+<div class="panel side">
+
+
+<div class="card">
+
+
+<h3>
+Ollama
+</h3>
+
+
+<div id="ollamaStatus">
+
+Local model
+
+</div>
+
+
+</div>
+
+
+
+
+<div class="card">
+
+
+<h3>
+System
+</h3>
+
+
+<div id="systemStatus">
+
+Loading...
+
+</div>
+
+
+</div>
+
+
+
+
+<div class="card">
+
+
+<h3>
+Internet
+</h3>
+
+
+<div id="rightInternet">
+
+Checking...
+
+</div>
+
+
+</div>
+
+
+
+</div>
+
+
+</div>
+
+
+</div>
+
+<script>
+
+
+function openTab(name){
+
+    document
+    .querySelectorAll(".tab")
+    .forEach(
+        t =>
+        t.classList.remove("active")
+    );
+
+
+    let tab =
+    document.getElementById(name);
+
+
+    if(tab){
+
+        tab.classList.add("active");
+
+    }
+
+}
+
+
+
+
+
+// =====================
+// CHAT
+// =====================
+
+
+document
+.getElementById("chatInput")
+.addEventListener(
+"keydown",
+function(e){
+
+    if(e.key === "Enter"){
+
+        sendMessage();
+
+    }
+
+});
+
+
+
+
+
+function addMessage(
+    text,
+    type
+){
+
+    let box =
+    document.getElementById(
+        "messages"
+    );
+
+
+    box.innerHTML +=
+
+    `
+    <div class="message ${type}">
+    ${text}
+    </div>
+    `;
+
+
+    box.scrollTop =
+    box.scrollHeight;
+
+}
+
+
+
+
+
+function sendMessage(){
+
+
+    let input =
+    document.getElementById(
+        "chatInput"
+    );
+
+
+    let text =
+    input.value.trim();
+
+
+
+    if(!text)
+    return;
+
+
+
+    addMessage(
+        text,
+        "user"
+    );
+
+
+    input.value="";
+
+
+
+    if(window.pywebview){
+
+
+        pywebview.api
+        .send_message(text)
+
+        .then(
+        reply=>{
+
+
+            addMessage(
+                reply,
+                "ai"
+            );
+
+
+        });
+
+
+    }
+
+}
+
+
+
+
+
+
+
+// =====================
+// MEMORY
+// =====================
+
+
+async function loadMemory(){
+
+
+    if(!window.pywebview)
+    return;
+
+
+
+    let data =
+    await pywebview.api.get_memory();
+
+
+
+    let list =
+    document.getElementById(
+        "memoryList"
+    );
+
+
+    list.innerHTML="";
+
+
+
+    data.memories.forEach(
+    m=>{
+
+
+        list.innerHTML +=
+
+        `
+        <div class="card">
+        ${m}
+        </div>
+        `;
+
+
+    });
+
+
+
+    let chats =
+    document.getElementById(
+        "chatList"
+    );
+
+
+    chats.innerHTML="";
+
+
+
+    data.chats.forEach(
+    c=>{
+
+
+        chats.innerHTML +=
+
+        `
+        <div class="card">
+
+        💬 ${c[1]}
+
+        </div>
+        `;
+
+
+    });
+
+
+
+}
+
+
+
+
+
+
+
+// =====================
+// STATUS
+// =====================
+
+
+async function updateStatus(){
+
+
+    if(!window.pywebview)
+    return;
+
+
+
+    try{
+
+
+        let status =
+        await pywebview.api
+        .get_system_status();
+
+
+
+        document.getElementById(
+            "systemStatus"
+        ).innerHTML =
+
+
+        `
+        CPU:
+        ${status.cpu}%
+
+
+        <br>
+
+
+        RAM:
+        ${status.ram}%
+
+
+        <br>
+
+
+        Disk:
+        ${status.disk}%
+
+        `;
+
+
+
+    }
+
+    catch(e){
+
+
+        document.getElementById(
+            "systemStatus"
+        ).innerHTML =
+        "Offline";
+
+
+    }
+
+
+
+}
+
+
+
+
+
+async function updateInternet(){
+
+
+    if(!window.pywebview)
+    return;
+
+
+
+    try{
+
+
+        let data =
+        await pywebview.api
+        .internet_status();
+
+
+
+        document.getElementById(
+            "internetStatus"
+        ).innerHTML =
+        data.status;
+
+
+
+        document.getElementById(
+            "rightInternet"
+        ).innerHTML =
+        data.status;
+
+
+
+    }
+
+    catch{
+
+
+        document.getElementById(
+            "internetStatus"
+        ).innerHTML =
+        "Unavailable";
+
+
+    }
+
+
+}
+
+
+
+
+
+
+function clearChat(){
+
+
+    document.getElementById(
+        "messages"
+    ).innerHTML =
+
+
+    `
+    <div class="message ai">
+    Chat cleared.
+    </div>
+    `;
+
+
+}
+
+
+
+
+
+
+// =====================
+// START
+// =====================
+
+
+window.onload=function(){
+
+
+    openTab(
+        "chat"
+    );
+
+
+    loadMemory();
+
+
+    updateStatus();
+
+
+    updateInternet();
+
+
+};
+
+
+
+
+setInterval(
+    updateStatus,
+    3000
+);
+
+
+
+setInterval(
+    updateInternet,
+    10000
+);
+
+
+
+</script>
+
+
+</body>
+
+</html>
