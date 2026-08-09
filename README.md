@@ -1,132 +1,226 @@
 # 🥒 PickleAI
 
-> **Your private, local AI desktop assistant powered by Ollama.**
+> **A local AI desktop assistant that can actually control your PC.**
+> Powered by Ollama + Qwen2.5-3B. No cloud AI API. No subscription.
 
-PickleAI brings a simple, modern AI experience to your Windows desktop using **local AI models**.
+<p align="center">
 
-No required cloud API. No subscription. Run your AI locally with **Ollama** and take control of your AI experience.
+**🧠 Local AI • 🖥️ PC Control • ⚡ Lightweight • 🔒 No Cloud API**
 
-## 📥 Download PickleAI
+</p>
 
-### 🥒 PickleAI v2.0.0 — Latest Release
+<p align="center">
 
-**Windows x64 • Portable • 19.4 MB**
+**⬇️ Download • ⭐ Star • 🥒 Start Building**
 
-👉 **[⬇️ Download PickleAI v2.0.0](../../releases/latest)**
-
-**Quick start:**
-
-1. Download the latest ZIP.
-2. Extract it.
-3. Run `PickleAI.exe`.
-4. Connect PickleAI to Ollama.
-5. Start chatting.
-
-🌐 **[Visit the PickleAI website](https://pickleforge-labs.github.io/PickleAI/)** for screenshots, updates, and more information.
+</p>
 
 ---
 
-## ✨ PickleAI v2
+## 🥒 Your AI. Your PC. Your Control.
 
-**A completely redesigned PickleAI experience.**
+**PickleAI** is a lightweight, open-source AI desktop assistant for Windows that runs locally through **Ollama** using **Qwen2.5-3B-Instruct**.
 
-v2 introduces a modern interface designed to make local AI easier and more enjoyable to use.
+But PickleAI isn't just another chatbot.
 
-### 🎨 Redesigned Interface
+### 🖥️ PickleAI can interact with your PC.
+
+Through its **Actions** and **AI Control** features, PickleAI is designed to go beyond generating text and interact with your desktop.
+
+That means your local AI can help you **perform actions on your computer**, not just talk about them.
+
+**Local AI → Ollama → PickleAI → Your PC**
+
+No mandatory cloud AI API.
+No monthly AI subscription.
+No sending your conversations to a hosted AI service for the core assistant.
+
+> ⚠️ **Important:** PC-control capabilities can perform actions on your computer. Only enable/use actions you understand and trust.
+
+---
+
+# 📥 Download PickleAI
+
+## 🥒 PickleAI v2.0.0 — Latest Release
+
+**Windows x64 • Portable • 19.4 MB**
+
+### 👉 Download PickleAI
+
+**[⬇️ Download the Latest Release](../../releases/latest)**
+
+No installer required.
+
+**Download → Extract → Run → Chat**
+
+### ⚡ Quick Start
+
+1. Install **Ollama**
+2. Install **Qwen2.5-3B-Instruct**
+3. Download PickleAI
+4. Extract the ZIP
+5. Run `PickleAI.exe`
+6. Start chatting with your local AI 🥒
+
+🌐 **[Visit the PickleAI website](https://pickleforge-labs.github.io/PickleAI/)** for screenshots, information, and updates.
+
+---
+
+# ⭐ Why PickleAI?
+
+Most AI assistants live in the cloud.
+
+**PickleAI is built for your desktop.**
+
+### 🧠 Local AI
+
+Run your AI through Ollama on your own Windows PC.
+
+### 🖥️ PC Control
+
+Go beyond chat with **Actions** and **AI Control** designed to let PickleAI interact with your computer.
+
+### 🔒 No Required Cloud AI API
+
+The core assistant doesn't require a hosted AI API or monthly AI subscription.
+
+### ⚡ Lightweight
+
+The v2.0.0 portable release is only **19.4 MB**.
+
+### 🆓 Open Source
+
+PickleAI is released under the **GNU GPLv3** license.
+
+### 🥒 Built Different
+
+PickleAI is designed to be a simple, approachable local AI desktop experience instead of another complicated AI platform.
+
+---
+
+# ✨ PickleAI v2
+
+Version 2 brings a completely redesigned PickleAI experience.
+
+## 🎨 Redesigned Interface
 
 * 🌙 Modern dark UI
 * 🧭 New sidebar navigation
 * 🎬 Improved animations
-* ✨ Updated panels and buttons
-* 🥒 New PickleAI branding
-* 👋 Redesigned welcome screen
+* ✨ Redesigned buttons and panels
+* 🥒 Updated PickleAI branding
+* 👋 New welcome experience
 
-### 🤖 AI
+## 🧠 AI Features
 
-* 💬 Local AI conversations
+* 💬 AI conversations
 * 🧠 Memory
-* ◈ AI controls
-* ⚡ AI actions
-* 🎛️ Model interaction controls
-
-### 🗂️ Organization
-
-* 💾 Saved chats
-* 🧠 Dedicated Memory page
-* ⚡ Dedicated Actions page
-* 🖥️ System Status page
-* ⚙️ Settings
+* ⚡ Actions
+* 🖥️ AI Control
+* 🛠️ Desktop interaction
 
 ---
 
-## 🤖 Powered by Local AI
+# 🖥️ PC Control
 
-PickleAI is built around **Ollama**, allowing supported AI models to run locally on your computer.
+### This is where PickleAI goes beyond a normal chatbot.
 
-### Default Model
+PickleAI's **AI Control** and **Actions** features are designed to let the assistant interact with your Windows desktop.
 
-**Qwen2.5-3B-Instruct**
+Instead of only asking:
 
-### Technology
+> "How do I do this?"
 
-* 🧠 Qwen2.5-3B-Instruct
+You can work toward:
+
+> "Do this for me."
+
+That opens the door to things like desktop automation, actions, and future integrations.
+
+PickleAI is being built around the idea that a local AI assistant should be able to **do more than generate text.**
+
+---
+
+# 🤖 Powered by Qwen2.5-3B
+
+PickleAI currently uses:
+
+### 🧠 Qwen2.5-3B-Instruct
+
+The model runs locally through **Ollama**.
+
+Keeping PickleAI focused on a tested model helps keep the application simple and predictable.
+
+### 🛠️ Stack
+
 * 🤖 Ollama
+* 🧠 Qwen2.5-3B-Instruct
 * 🐍 Python
 * 🖥️ Windows x64
 
-Your AI model runs through Ollama on your own machine rather than requiring a hosted AI API.
+---
+
+# 🔒 Local AI
+
+PickleAI is designed around a simple architecture:
+
+```text
+┌──────────────┐
+│   PickleAI   │
+└──────┬───────┘
+       │
+       ▼
+┌──────────────┐
+│    Ollama    │
+└──────┬───────┘
+       │
+       ▼
+┌──────────────┐
+│ Qwen2.5-3B   │
+└──────────────┘
+       │
+       ▼
+    Your PC
+```
+
+Your AI model runs through Ollama on your computer.
+
+Performance depends on your hardware and available system resources.
 
 ---
 
-## 🔒 Why Local AI?
+# 🖥️ Requirements
 
-PickleAI is designed for people who want more control over their AI experience.
-
-### Your computer. Your model. Your choice.
-
-* 🔒 Local processing
-* 📴 No required cloud AI service
-* 🔑 No required API key
-* 💰 No required AI subscription
-* 🎛️ Choose your local model
-* 🌱 Open-source project
-
-> **Note:** Ollama and the AI model require their own system resources. Performance depends on your hardware and selected model.
+* **Windows x64**
+* **Ollama**
+* **Qwen2.5-3B-Instruct**
+* Enough system resources to run the model
 
 ---
 
-## 🖥️ Requirements
+# 🚀 Installation
 
-* Windows x64
-* [Ollama](https://ollama.com/)
-* Qwen2.5-3B-Instruct or another compatible model
-* Hardware capable of running your selected model
+## 1. Install Ollama
 
-### Before launching PickleAI
+Install Ollama on your Windows PC.
 
-Make sure Ollama is installed and running on your computer.
+## 2. Install Qwen2.5-3B-Instruct
 
----
+Make sure **Qwen2.5-3B-Instruct** is available through Ollama.
 
-## 🚀 Quick Start
-
-### 1. Install Ollama
-
-Install Ollama for Windows.
-
-### 2. Get your AI model
-
-Make sure your chosen model is available through Ollama.
-
-### 3. Download PickleAI
+## 3. Download PickleAI
 
 Download the latest PickleAI release from GitHub.
 
-### 4. Extract PickleAI
+## 4. Extract the ZIP
 
-Extract the downloaded ZIP.
+Extract:
 
-### 5. Launch
+```text
+PickleAI-v2.0.0-Win64-Portable.zip
+```
+
+## 5. Launch PickleAI
 
 Run:
 
@@ -134,115 +228,119 @@ Run:
 PickleAI.exe
 ```
 
-### 6. Start chatting 🥒
+## 6. Start chatting 🥒
 
-Connect to Ollama and start using your local AI assistant.
-
----
-
-## 📸 Screenshots
-
-> **Add 2–4 screenshots of PickleAI v2 here.**
->
-> Recommended:
->
-> * Main chat screen
-> * Sidebar/navigation
-> * Memory page
-> * AI Control or Actions page
+Make sure Ollama is running and start using PickleAI.
 
 ---
 
-## 🛠️ Roadmap
+# 🛣️ Roadmap
 
-PickleAI is actively evolving.
+PickleAI is actively being developed.
 
 Planned improvements include:
 
-* 🧠 More AI capabilities
+* 🧠 Better AI capabilities
+* 🖥️ More PC-control functionality
 * ⚡ More automation
-* 🎛️ More customization
-* 💬 Better conversations
-* 📚 Additional local AI tools
+* 🎨 More customization
+* 💬 Improved conversations
 * 🚀 Performance improvements
-* 🎨 Continued UI improvements
-* 🔌 More model support
+* 🔧 More tools
+* 🤖 Additional model support
+* 🧩 More integrations
 
-Have an idea?
+The goal is simple:
 
-**Open an issue and suggest it.**
+> **Build a local AI assistant that can actually help you use your computer.**
 
 ---
 
-## 🐛 Found a Bug?
+# 🐛 Found a Bug?
 
-Found something broken?
+Help make PickleAI better.
 
-**[Open an issue](../../issues/new)** and include:
+**[Open an Issue](../../issues/new)** and include:
 
 * What happened
 * What you expected
 * Your Windows version
-* Your Ollama/model setup
+* Your Ollama setup
 * Any error messages
+* Steps to reproduce the problem
 
-Bug reports help make PickleAI better.
-
----
-
-## 💡 Have an Idea?
-
-Want a new feature?
-
-Open an issue and tell us what you'd like to see in PickleAI.
-
-Good ideas can become future PickleAI features. 🥒
+The more details you provide, the easier it is to fix.
 
 ---
 
-## ⭐ Support PickleAI
+# 💡 Have an Idea?
 
-If you enjoy PickleAI, **please consider giving the repository a star ⭐**
+Have a feature request?
 
-Stars help:
+Open an issue and tell us what you'd like to see.
 
-* 📈 Increase project visibility
-* 👀 Help more people discover PickleAI
-* 🥒 Motivate continued development
-* 🚀 Show that people are interested in the project
-
-You can also help by:
-
-* 📢 Sharing PickleAI
-* 💬 Giving feedback
-* 🐛 Reporting bugs
-* 💡 Suggesting features
-* 🤝 Contributing
-
-**Every star helps. Thank you! ❤️**
+PickleAI is still evolving, and community feedback can directly influence what gets built next.
 
 ---
 
-## 🥒 PickleForge Labs
+# ⭐ Like PickleAI?
 
-**PickleAI is part of PickleForge Labs.**
+If PickleAI is useful to you, **please consider starring the repository ⭐**
 
-PickleForge Labs is building a collection of useful desktop applications, developer tools, and local AI software.
+A GitHub star helps:
 
-More Pickle projects are coming.
+* 📈 More people discover PickleAI
+* 🥒 The project grow
+* 🚀 Build momentum for new features
+* 💡 Show that people want local AI desktop assistants
+* ❤️ Support an independent open-source project
+
+### ⭐ One click helps more than you think.
+
+**Star PickleAI → Try it → Share it**
+
+If you really like the project, you can also:
+
+* ⭐ Star the repository
+* 📢 Share PickleAI
+* 🐛 Report bugs
+* 💡 Suggest features
+* 🤝 Contribute
+* 📣 Tell someone who loves local AI
+
+**Thanks for helping PickleAI grow. 🥒**
 
 ---
 
-## 📜 License
+# 🥒 PickleForge Labs
 
-PickleAI is open source and licensed under the **GNU GPLv3**.
+PickleAI is developed by **PickleForge Labs**.
+
+PickleForge Labs is building a collection of:
+
+* 🖥️ Desktop applications
+* 🤖 Local AI software
+* 🛠️ Developer tools
+* 🧩 Experimental projects
+
+**More Pickle projects are coming.**
 
 ---
 
-### 🥒 PickleAI
+# 📜 License
 
-**Local AI. Your computer. Your control.**
+PickleAI is licensed under the **GNU GPLv3**.
 
-Built with ❤️ by **PickleForge Labs**.
+---
 
-**Copyright © 2026 PickleForge Labs**
+<div align="center">
+
+# 🥒 PickleAI
+
+### Local AI. Desktop control. No subscription.
+
+**Powered by Ollama + Qwen2.5-3B**
+
+⭐ **Star the project if you want to see PickleAI grow.**
+
+</div>
