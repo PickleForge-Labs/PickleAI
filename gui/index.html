@@ -1,1383 +1,2311 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
-
 <meta charset="UTF-8">
-
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>PickleAI</title>
 
-
 <style>
+:root {
+    --bg: #08090b;
+    --panel: rgba(18, 20, 24, .58);
+    --panel-hover: rgba(255,255,255,.055);
+    --border: rgba(255,255,255,.075);
+    --border-hover: rgba(255,255,255,.13);
 
-*{
-    box-sizing:border-box;
+    --text: #f2f3f5;
+    --muted: #858b96;
+
+    --accent: #75e5a4;
+    --accent-soft: rgba(117,229,164,.10);
+
+    --sidebar-collapsed: 68px;
+    --sidebar-expanded: 214px;
+
+    --ease: cubic-bezier(.2,.8,.2,1);
 }
 
+/* ---------------- BASE ---------------- */
 
-:root{
-
-    --bg:#050816;
-    --panel:rgba(15,23,42,.82);
-    --card:rgba(30,41,59,.75);
-    --line:rgba(255,255,255,.08);
-    --blue:#3b82f6;
-    --text:#e5e7eb;
-
+* {
+    box-sizing: border-box;
 }
 
+html,
+body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+}
 
-body{
-
-    margin:0;
-    height:100vh;
-    overflow:hidden;
+body {
+    overflow: hidden;
+    color: var(--text);
 
     font-family:
-    Segoe UI,
-    Arial,
-    sans-serif;
+        Inter,
+        "Segoe UI",
+        Arial,
+        sans-serif;
 
     background:
-    radial-gradient(
-        circle at top left,
-        #1e3a8a,
-        transparent 35%
-    ),
-    radial-gradient(
-        circle at bottom right,
-        #581c87,
-        transparent 35%
-    ),
-    var(--bg);
-
-    color:var(--text);
-
+        radial-gradient(
+            circle at 15% 10%,
+            rgba(117,229,164,.055),
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 85% 90%,
+            rgba(90,120,255,.045),
+            transparent 35%
+        ),
+        var(--bg);
 }
 
+/* ---------------- APP ---------------- */
 
-
-.app{
-
-    display:flex;
-    height:100vh;
-
+.app {
+    width: 100%;
+    height: 100%;
+    display: flex;
 }
 
+/* ---------------- SIDEBAR ---------------- */
 
+.sidebar {
+    position: relative;
+    z-index: 20;
 
-/* =====================
-SIDEBAR
-===================== */
+    width: var(--sidebar-collapsed);
+    min-width: var(--sidebar-collapsed);
 
+    height: 100%;
 
-.sidebar{
+    padding: 12px 9px;
 
-    width:90px;
+    background: rgba(8,10,13,.68);
+    border-right: 1px solid var(--border);
 
-    padding:20px 12px;
+    backdrop-filter: blur(25px);
+
+    transition:
+        width .23s var(--ease),
+        min-width .23s var(--ease);
+
+    overflow: hidden;
+}
+
+.sidebar:hover {
+    width: var(--sidebar-expanded);
+    min-width: var(--sidebar-expanded);
+}
+
+/* ---------------- BRAND ---------------- */
+
+.brand {
+    width: 100%;
+    height: 45px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 11px;
+
+    padding: 0 9px;
+
+    margin-bottom: 20px;
+
+    white-space: nowrap;
+}
+
+.brand-icon {
+    width: 34px;
+    height: 34px;
+
+    flex: 0 0 34px;
+
+    display: grid;
+    place-items: center;
+
+    border-radius: 11px;
+
+    color: var(--accent);
+
+    background: rgba(255,255,255,.035);
+    border: 1px solid var(--border);
+
+    font-size: 18px;
+}
+
+.brand-text {
+    opacity: 0;
+    transform: translateX(-6px);
+
+    transition:
+        opacity .16s ease,
+        transform .2s var(--ease);
+
+    pointer-events: none;
+}
+
+.sidebar:hover .brand-text {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.brand-name {
+    font-weight: 800;
+    font-size: 15px;
+}
+
+.brand-version {
+    color: var(--muted);
+    font-size: 10px;
+    margin-top: 2px;
+}
+
+/* ---------------- NAV ---------------- */
+
+.nav {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.nav-button {
+    position: relative;
+
+    width: 100%;
+    height: 43px;
+
+    display: flex;
+    align-items: center;
+
+    padding: 0 11px;
+
+    gap: 13px;
+
+    border-radius: 12px;
+
+    border: 1px solid transparent;
+
+    background: transparent;
+
+    color: var(--muted);
+
+    cursor: pointer;
+
+    white-space: nowrap;
+
+    transition:
+        background .16s ease,
+        color .16s ease,
+        border .16s ease;
+}
+
+.nav-button:hover {
+    color: var(--text);
+    background: var(--panel-hover);
+    border-color: var(--border);
+}
+
+.nav-button.active {
+    color: var(--accent);
+    background: var(--accent-soft);
+    border-color: rgba(117,229,164,.09);
+}
+
+.nav-button.active::before {
+    content: "";
+
+    position: absolute;
+
+    left: -9px;
+
+    width: 2px;
+    height: 20px;
+
+    border-radius: 3px;
+
+    background: var(--accent);
+
+    box-shadow: 0 0 14px rgba(117,229,164,.55);
+}
+
+.nav-icon {
+    width: 24px;
+    min-width: 24px;
+
+    text-align: center;
+
+    font-size: 16px;
+}
+
+.nav-label {
+    opacity: 0;
+    transform: translateX(-7px);
+
+    transition:
+        opacity .15s ease,
+        transform .2s var(--ease);
+}
+
+.sidebar:hover .nav-label {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* ---------------- SIDEBAR USER ---------------- */
+
+.user-area {
+    position: absolute;
+
+    left: 9px;
+    right: 9px;
+    bottom: 12px;
+}
+
+.user-button {
+    width: 100%;
+    height: 43px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 12px;
+
+    padding: 0 10px;
+
+    color: var(--muted);
+
+    border-radius: 12px;
+    border: 1px solid var(--border);
+
+    background: rgba(255,255,255,.025);
+}
+
+.user-avatar {
+    width: 25px;
+    height: 25px;
+
+    min-width: 25px;
+
+    display: grid;
+    place-items: center;
+
+    border-radius: 50%;
+
+    background: rgba(117,229,164,.09);
+
+    color: var(--accent);
+
+    font-size: 11px;
+}
+
+.user-info {
+    overflow: hidden;
+
+    opacity: 0;
+    transform: translateX(-7px);
+
+    transition:
+        opacity .15s ease,
+        transform .2s var(--ease);
+}
+
+.sidebar:hover .user-info {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.user-name {
+    font-size: 12px;
+    font-weight: 700;
+
+    white-space: nowrap;
+}
+
+.user-caption {
+    color: var(--muted);
+    font-size: 9px;
+}
+
+/* ---------------- MAIN ---------------- */
+
+.main {
+    flex: 1;
+    min-width: 0;
+
+    display: flex;
+    flex-direction: column;
+}
+
+/* ---------------- TOPBAR ---------------- */
+
+.topbar {
+    height: 60px;
+    min-height: 60px;
+
+    padding: 0 21px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    border-bottom: 1px solid var(--border);
+
+    background: rgba(8,10,13,.32);
+
+    backdrop-filter: blur(20px);
+}
+
+.page-title {
+    font-size: 14px;
+    font-weight: 750;
+}
+
+.top-status {
+    display: flex;
+    align-items: center;
+
+    gap: 7px;
+
+    padding: 7px 11px;
+
+    border-radius: 20px;
+
+    border: 1px solid var(--border);
+
+    background: rgba(255,255,255,.025);
+
+    color: var(--muted);
+
+    font-size: 10px;
+}
+
+.status-dot {
+    width: 6px;
+    height: 6px;
+
+    border-radius: 50%;
+
+    background: var(--accent);
+
+    box-shadow: 0 0 12px rgba(117,229,164,.7);
+}
+
+/* ---------------- CONTENT ---------------- */
+
+.content {
+    flex: 1;
+    min-height: 0;
+}
+
+.page {
+    display: none;
+
+    width: 100%;
+    height: 100%;
+}
+
+.page.active {
+    display: flex;
+}
+
+/* ---------------- CHAT ---------------- */
+
+.chat {
+    flex-direction: column;
+}
+
+.messages {
+    flex: 1;
+
+    overflow-y: auto;
+
+    padding: 28px 25px 15px;
+}
+
+.message-container {
+    width: min(850px, 100%);
+    margin: auto;
+}
+
+.welcome {
+    height: 100%;
+
+    min-height: 390px;
+
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+
+    padding-bottom: 20px;
+}
+
+.welcome-symbol {
+    width: 66px;
+    height: 66px;
+
+    display: grid;
+    place-items: center;
+
+    margin-bottom: 18px;
+
+    border-radius: 20px;
+
+    color: var(--accent);
 
     background:
-    rgba(15,23,42,.75);
+        linear-gradient(
+            145deg,
+            rgba(117,229,164,.08),
+            rgba(255,255,255,.025)
+        );
 
-    border-right:
-    1px solid var(--line);
+    border: 1px solid var(--border);
 
-    backdrop-filter:
-    blur(25px);
-
-    transition:.3s;
-
-    overflow:hidden;
-
+    box-shadow:
+        0 20px 60px rgba(0,0,0,.25);
 }
 
-
-.sidebar:hover{
-
-    width:240px;
-
+.welcome-symbol span {
+    font-size: 31px;
 }
 
+.welcome h1 {
+    margin: 0;
 
+    font-size: 29px;
 
-.brand{
-
-    display:flex;
-
-    align-items:center;
-
-    gap:15px;
-
-    margin-bottom:35px;
-
+    letter-spacing: -.035em;
 }
 
+.welcome p {
+    max-width: 480px;
 
+    margin: 9px 0 0;
 
-.logo{
+    color: var(--muted);
 
-    font-size:38px;
+    font-size: 13px;
 
+    line-height: 1.65;
 }
 
+/* ---------------- MESSAGES ---------------- */
 
+.message {
+    display: flex;
 
-.brand span{
+    gap: 10px;
 
-    font-size:26px;
-
-    font-weight:800;
-
-    opacity:0;
-
-    transition:.3s;
-
+    margin: 0 0 18px;
 }
 
-
-
-.sidebar:hover .brand span{
-
-    opacity:1;
-
+.message.user {
+    justify-content: flex-end;
 }
 
+.avatar {
+    width: 30px;
+    height: 30px;
 
+    min-width: 30px;
 
-.nav{
+    display: grid;
+    place-items: center;
 
-    display:flex;
+    border-radius: 9px;
 
-    flex-direction:column;
+    border: 1px solid var(--border);
 
-    gap:10px;
+    background: rgba(255,255,255,.035);
 
+    font-size: 13px;
 }
 
-
-
-.nav button{
-
-    height:55px;
-
-    display:flex;
-
-    align-items:center;
-
-    gap:18px;
-
-    border:0;
-
-    border-radius:16px;
-
-    background:none;
-
-    color:white;
-
-    cursor:pointer;
-
-    font-size:16px;
-
-    padding:12px;
-
+.user .avatar {
+    order: 2;
+    color: var(--accent);
 }
 
+.bubble {
+    max-width: 75%;
 
+    padding: 11px 14px;
 
-.nav button:hover{
+    border-radius: 14px;
 
-    background:
-    rgba(59,130,246,.25);
+    border: 1px solid var(--border);
 
+    background: rgba(18,20,24,.54);
+
+    backdrop-filter: blur(16px);
+
+    color: var(--text);
+
+    font-size: 13px;
+
+    line-height: 1.6;
+
+    white-space: pre-wrap;
+
+    overflow-wrap: anywhere;
 }
 
-
-
-.icon{
-
-    font-size:22px;
-
-    min-width:30px;
-
+.user .bubble {
+    background: rgba(117,229,164,.065);
+    border-color: rgba(117,229,164,.10);
 }
 
+/* ---------------- COMPOSER ---------------- */
 
-
-.label{
-
-    opacity:0;
-
-    transition:.3s;
-
+.composer-area {
+    padding: 9px 25px 20px;
 }
 
+.composer {
+    width: min(850px, 100%);
 
+    margin: auto;
 
-.sidebar:hover .label{
+    min-height: 54px;
 
-    opacity:1;
+    display: flex;
+    align-items: flex-end;
 
+    gap: 5px;
+
+    padding: 7px;
+
+    border-radius: 16px;
+
+    background: rgba(18,20,24,.52);
+
+    border: 1px solid var(--border);
+
+    backdrop-filter: blur(22px);
+
+    transition: border .15s ease;
 }
 
+.composer:focus-within {
+    border-color: rgba(255,255,255,.13);
+}
 
+.composer textarea {
+    flex: 1;
 
+    min-height: 39px;
+    max-height: 145px;
 
+    resize: none;
 
-/* =====================
-MAIN
-===================== */
+    border: 0;
+    outline: 0;
 
+    padding: 10px 8px;
 
-.main{
+    background: transparent;
 
-    flex:1;
+    color: var(--text);
 
-    display:grid;
+    font: inherit;
+
+    font-size: 13px;
+}
+
+.composer textarea::placeholder {
+    color: #666c76;
+}
+
+.tool-button {
+    width: 39px;
+    height: 39px;
+
+    border-radius: 11px;
+
+    border: 1px solid transparent;
+
+    background: transparent;
+
+    color: var(--muted);
+
+    cursor: pointer;
+
+    transition: .15s ease;
+}
+
+.tool-button:hover {
+    color: var(--text);
+    background: rgba(255,255,255,.055);
+    border-color: var(--border);
+}
+
+.send-button {
+    color: var(--accent);
+}
+
+.send-button:hover {
+    color: var(--accent);
+    background: rgba(117,229,164,.08);
+}
+
+/* ---------------- DASHBOARDS ---------------- */
+
+.dashboard {
+    flex-direction: column;
+
+    gap: 14px;
+
+    overflow-y: auto;
+
+    padding: 25px;
+}
+
+.panel {
+    padding: 21px;
+
+    border-radius: 17px;
+
+    background: rgba(18,20,24,.43);
+
+    border: 1px solid var(--border);
+
+    backdrop-filter: blur(18px);
+}
+
+.panel-title {
+    font-size: 16px;
+    font-weight: 750;
+}
+
+.panel-description {
+    margin-top: 6px;
+
+    color: var(--muted);
+
+    font-size: 12px;
+
+    line-height: 1.55;
+}
+
+.cards {
+    display: grid;
 
     grid-template-columns:
-    1fr 300px;
+        repeat(
+            auto-fit,
+            minmax(180px, 1fr)
+        );
 
-    gap:20px;
-
-    padding:25px;
-
+    gap: 10px;
 }
 
+.card {
+    min-height: 100px;
 
+    padding: 16px;
 
-.panel{
+    border-radius: 14px;
+
+    background: rgba(255,255,255,.022);
+
+    border: 1px solid var(--border);
+
+    transition: .16s ease;
+}
+
+.card:hover {
+    background: rgba(255,255,255,.04);
+    border-color: var(--border-hover);
+    transform: translateY(-1px);
+}
+
+.card-label {
+    color: var(--muted);
+
+    font-size: 9px;
+
+    text-transform: uppercase;
+
+    letter-spacing: .1em;
+}
+
+.card-value {
+    margin-top: 10px;
+
+    font-size: 18px;
+
+    font-weight: 750;
+}
+
+.green {
+    color: var(--accent);
+}
+
+.yellow {
+    color: #e7c879;
+}
+
+.blue {
+    color: #91aaff;
+}
+
+/* ---------------- NAME SCREEN ---------------- */
+
+.name-screen {
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 100;
+
+    display: none;
+
+    align-items: center;
+    justify-content: center;
 
     background:
-    var(--panel);
+        radial-gradient(
+            circle at center,
+            rgba(117,229,164,.055),
+            transparent 35%
+        ),
+        rgba(5,6,8,.86);
 
-    border:
-    1px solid var(--line);
-
-    border-radius:28px;
-
-    padding:25px;
-
-    backdrop-filter:
-    blur(25px);
-
+    backdrop-filter: blur(28px);
 }
 
-
-
-.content{
-
-    height:
-    calc(100vh - 50px);
-
-    overflow:hidden;
-
+.name-screen.show {
+    display: flex;
 }
 
+.name-box {
+    width: min(440px, calc(100% - 35px));
 
+    padding: 34px;
 
-.side{
+    text-align: center;
 
-    height:
-    calc(100vh - 50px);
+    border-radius: 22px;
 
+    background: rgba(18,20,24,.64);
+
+    border: 1px solid var(--border);
+
+    backdrop-filter: blur(25px);
+
+    box-shadow:
+        0 30px 100px rgba(0,0,0,.45);
 }
 
+.name-symbol {
+    width: 64px;
+    height: 64px;
 
+    margin: 0 auto 17px;
 
+    display: grid;
+    place-items: center;
 
+    border-radius: 19px;
 
-.tab{
+    color: var(--accent);
 
-    display:none;
+    background: rgba(117,229,164,.07);
 
-    height:100%;
+    border: 1px solid rgba(117,229,164,.09);
 
+    font-size: 30px;
 }
 
+.name-box h1 {
+    margin: 0;
 
-
-.tab.active{
-
-    display:block;
-
+    font-size: 25px;
 }
 
+.name-box p {
+    margin: 8px 0 22px;
 
+    color: var(--muted);
 
-.title{
-
-    font-size:32px;
-
-    font-weight:800;
-
+    font-size: 13px;
 }
 
+.name-input {
+    width: 100%;
 
+    padding: 13px 14px;
 
-.subtitle{
+    outline: none;
 
-    color:#94a3b8;
+    border-radius: 11px;
 
-    margin-bottom:20px;
+    border: 1px solid var(--border);
 
+    background: rgba(255,255,255,.035);
+
+    color: var(--text);
+
+    text-align: center;
+
+    font: inherit;
 }
 
-
-
-.card{
-
-    background:
-    var(--card);
-
-    border:
-    1px solid var(--line);
-
-    border-radius:20px;
-
-    padding:18px;
-
-    margin-bottom:15px;
-
+.name-input:focus {
+    border-color: rgba(117,229,164,.25);
 }
 
+.continue-button {
+    width: 100%;
 
+    margin-top: 9px;
 
-.card h3{
+    padding: 12px;
 
-    margin-top:0;
+    border-radius: 11px;
 
+    border: 1px solid rgba(117,229,164,.13);
+
+    background: rgba(117,229,164,.075);
+
+    color: var(--accent);
+
+    cursor: pointer;
+
+    font-weight: 750;
+
+    transition: .16s ease;
 }
 
-
-
-.button{
-
-    background:
-    var(--blue);
-
-    border:0;
-
-    color:white;
-
-    padding:12px 18px;
-
-    border-radius:12px;
-
-    cursor:pointer;
-
+.continue-button:hover {
+    background: rgba(117,229,164,.12);
 }
 
+/* ---------------- TOAST ---------------- */
 
+.toast {
+    position: fixed;
 
-.button:hover{
+    right: 18px;
+    bottom: 18px;
 
-    background:#60a5fa;
+    z-index: 200;
 
+    padding: 10px 14px;
+
+    border-radius: 11px;
+
+    border: 1px solid var(--border);
+
+    background: rgba(18,20,24,.85);
+
+    backdrop-filter: blur(18px);
+
+    color: var(--text);
+
+    font-size: 12px;
+
+    opacity: 0;
+
+    transform: translateY(10px);
+
+    pointer-events: none;
+
+    transition: .2s ease;
 }
 
-
-
-
-
-/* =====================
-CHAT
-===================== */
-
-
-.chat-box{
-
-    height:
-    calc(100% - 120px);
-
-    overflow:auto;
-
-    padding:10px;
-
+.toast.show {
+    opacity: 1;
+    transform: translateY(0);
 }
 
+/* ---------------- SCROLLBARS ---------------- */
 
-
-.message{
-
-    padding:14px;
-
-    margin:10px;
-
-    border-radius:18px;
-
-    max-width:75%;
-
+::-webkit-scrollbar {
+    width: 5px;
 }
 
-
-
-.ai{
-
-    background:#172554;
-
+::-webkit-scrollbar-track {
+    background: transparent;
 }
 
-
-
-.user{
-
-    background:#2563eb;
-
-    margin-left:auto;
-
+::-webkit-scrollbar-thumb {
+    background: rgba(255,255,255,.09);
+    border-radius: 10px;
 }
 
-
-
-.input-area{
-
-    display:flex;
-
-    gap:10px;
-
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(255,255,255,.15);
 }
 
+/* ---------------- SMALL WINDOW ---------------- */
 
+@media (max-width: 700px) {
 
-#chatInput{
+    .sidebar {
+        width: 58px;
+        min-width: 58px;
+    }
 
-    flex:1;
+    .sidebar:hover {
+        width: 58px;
+        min-width: 58px;
+    }
 
-    padding:15px;
+    .brand-text,
+    .nav-label,
+    .user-info {
+        display: none;
+    }
 
-    border-radius:15px;
+    .messages {
+        padding-left: 14px;
+        padding-right: 14px;
+    }
 
-    border:1px solid var(--line);
+    .composer-area {
+        padding-left: 14px;
+        padding-right: 14px;
+    }
 
-    background:#020617;
-
-    color:white;
-
-    font-size:16px;
-
+    .bubble {
+        max-width: 85%;
+    }
 }
-
 </style>
-
 </head>
-
 
 <body>
 
+<!-- ================= NAME ================= -->
+
+<div class="name-screen" id="nameScreen">
+
+    <div class="name-box">
+
+        <div class="name-symbol">
+            🥒
+        </div>
+
+        <h1>
+            Welcome to PickleAI
+        </h1>
+
+        <p>
+            Before we start, what should I call you?
+        </p>
+
+        <input
+            id="nameInput"
+            class="name-input"
+            maxlength="40"
+            placeholder="Your name"
+        >
+
+        <button
+            class="continue-button"
+            onclick="saveName()"
+        >
+            Continue
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- ================= APP ================= -->
 
 <div class="app">
 
+    <aside class="sidebar">
 
-<div class="sidebar">
+        <div class="brand">
+
+            <div class="brand-icon">
+                🥒
+            </div>
+
+            <div class="brand-text">
+
+                <div class="brand-name">
+                    PickleAI
+                </div>
+
+                <div class="brand-version">
+                    v2.0
+                </div>
+
+            </div>
+
+        </div>
 
 
-<div class="brand">
+        <nav class="nav">
 
-<div class="logo">
-🥒
+            <button
+                class="nav-button active"
+                onclick="showPage('chat', this)"
+            >
+                <span class="nav-icon">＋</span>
+                <span class="nav-label">New Chat</span>
+            </button>
+
+            <button
+                class="nav-button"
+                onclick="showPage('memory', this)"
+            >
+                <span class="nav-icon">◉</span>
+                <span class="nav-label">Memory</span>
+            </button>
+
+            <button
+                class="nav-button"
+                onclick="showPage('actions', this)"
+            >
+                <span class="nav-icon">ϟ</span>
+                <span class="nav-label">Actions</span>
+            </button>
+
+            <button
+                class="nav-button"
+                onclick="showPage('control', this)"
+            >
+                <span class="nav-icon">◈</span>
+                <span class="nav-label">AI Control</span>
+            </button>
+
+            <button
+                class="nav-button"
+                onclick="showPage('system', this)"
+            >
+                <span class="nav-icon">⌘</span>
+                <span class="nav-label">System</span>
+            </button>
+
+            <button
+                class="nav-button"
+                onclick="showPage('chats', this)"
+            >
+                <span class="nav-icon">☷</span>
+                <span class="nav-label">Saved Chats</span>
+            </button>
+
+            <button
+                class="nav-button"
+                onclick="showPage('settings', this)"
+            >
+                <span class="nav-icon">⚙</span>
+                <span class="nav-label">Settings</span>
+            </button>
+
+        </nav>
+
+
+        <div class="user-area">
+
+            <div class="user-button">
+
+                <div class="user-avatar">
+                    U
+                </div>
+
+                <div class="user-info">
+
+                    <div
+                        class="user-name"
+                        id="sidebarName"
+                    >
+                        Guest
+                    </div>
+
+                    <div class="user-caption">
+                        PickleAI user
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </aside>
+
+
+    <main class="main">
+
+        <header class="topbar">
+
+            <div
+                class="page-title"
+                id="pageTitle"
+            >
+                New Chat
+            </div>
+
+            <div class="top-status">
+
+                <span class="status-dot"></span>
+
+                <span id="aiStatus">
+                    AI Ready
+                </span>
+
+            </div>
+
+        </header>
+
+
+        <section class="content">
+
+            <!-- CHAT -->
+
+            <div
+                class="page active chat"
+                id="page-chat"
+            >
+
+                <div
+                    class="messages"
+                    id="messages"
+                >
+
+                    <div
+                        class="message-container"
+                        id="messageContainer"
+                    >
+
+                        <div
+                            class="welcome"
+                            id="welcome"
+                        >
+
+                            <div class="welcome-symbol">
+                                <span>🥒</span>
+                            </div>
+
+                            <h1>
+                                Hi,
+                                <span id="welcomeName">
+                                    there
+                                </span>.
+                            </h1>
+
+                            <p>
+                                I'm PickleAI. Your local
+                                desktop AI assistant.
+                                What can I help you with?
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="composer-area">
+
+                    <div class="composer">
+
+                        <button
+                            class="tool-button"
+                            onclick="voiceInput()"
+                            title="Voice input"
+                        >
+                            ♫
+                        </button>
+
+                        <textarea
+                            id="messageInput"
+                            rows="1"
+                            placeholder="Message PickleAI..."
+                            onkeydown="handleInput(event)"
+                        ></textarea>
+
+                        <button
+                            class="tool-button send-button"
+                            onclick="sendMessage()"
+                            title="Send"
+                        >
+                            ↑
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- MEMORY -->
+
+            <div
+                class="page dashboard"
+                id="page-memory"
+            >
+
+                <div class="panel">
+
+                    <div class="panel-title">
+                        Memory
+                    </div>
+
+                    <div class="panel-description">
+                        Information saved by PickleAI.
+                    </div>
+
+                </div>
+
+                <div
+                    class="cards"
+                    id="memoryCards"
+                ></div>
+
+            </div>
+
+
+            <!-- ACTIONS -->
+
+            <div
+                class="page dashboard"
+                id="page-actions"
+            >
+
+                <div class="panel">
+
+                    <div class="panel-title">
+                        Actions
+                    </div>
+
+                    <div class="panel-description">
+                        PickleAI's existing action system.
+                        Restricted operations can be confirmed
+                        before execution.
+                    </div>
+
+                </div>
+
+                <div class="cards">
+
+                    <div class="card">
+                        <div class="card-label">
+                            NORMAL
+                        </div>
+                        <div class="card-value green">
+                            Available
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-label">
+                            CONFIRM
+                        </div>
+                        <div class="card-value yellow">
+                            Ask First
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-label">
+                            RESTRICTED
+                        </div>
+                        <div class="card-value">
+                            Warn + Ask
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- CONTROL -->
+
+            <div
+                class="page dashboard"
+                id="page-control"
+            >
+
+                <div class="panel">
+
+                    <div class="panel-title">
+                        AI Control Center
+                    </div>
+
+                    <div class="panel-description">
+                        A visual control surface for the
+                        existing PickleAI systems.
+                    </div>
+
+                </div>
+
+                <div class="cards">
+
+                    <div class="card">
+                        <div class="card-label">AI</div>
+                        <div class="card-value green">
+                            Ready
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-label">MEMORY</div>
+                        <div class="card-value green">
+                            Active
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-label">ACTIONS</div>
+                        <div class="card-value green">
+                            Available
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-label">SAFETY</div>
+                        <div class="card-value blue">
+                            Protected
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- SYSTEM -->
+
+            <div
+                class="page dashboard"
+                id="page-system"
+            >
+
+                <div class="panel">
+
+                    <div class="panel-title">
+                        System
+                    </div>
+
+                    <div class="panel-description">
+                        Current PickleAI system status.
+                    </div>
+
+                </div>
+
+                <div class="cards">
+
+                    <div class="card">
+
+                        <div class="card-label">
+                            SYSTEM
+                        </div>
+
+                        <div
+                            class="card-value green"
+                            id="systemStatus"
+                        >
+                            Loading
+                        </div>
+
+                    </div>
+
+                    <div class="card">
+
+                        <div class="card-label">
+                            INTERNET
+                        </div>
+
+                        <div
+                            class="card-value"
+                            id="internetStatus"
+                        >
+                            Checking
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- CHATS -->
+
+            <div
+                class="page dashboard"
+                id="page-chats"
+            >
+
+                <div class="panel">
+
+                    <div class="panel-title">
+                        Saved Chats
+                    </div>
+
+                    <div class="panel-description">
+                        Your saved PickleAI conversations.
+                    </div>
+
+                </div>
+
+                <div
+                    class="cards"
+                    id="chatCards"
+                ></div>
+
+            </div>
+
+
+            <!-- SETTINGS -->
+
+            <div
+                class="page dashboard"
+                id="page-settings"
+            >
+
+                <div class="panel">
+
+                    <div class="panel-title">
+                        Settings
+                    </div>
+
+                    <div class="panel-description">
+                        PickleAI preferences.
+                    </div>
+
+                </div>
+
+                <div class="cards">
+
+                    <div class="card">
+
+                        <div class="card-label">
+                            USER
+                        </div>
+
+                        <div
+                            class="card-value"
+                            id="settingsName"
+                        >
+                            Guest
+                        </div>
+
+                    </div>
+
+                    <div class="card">
+
+                        <div class="card-label">
+                            VERSION
+                        </div>
+
+                        <div class="card-value">
+                            v2.0
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <button
+                    class="tool-button"
+                    style="width:auto;padding:0 15px;"
+                    onclick="changeName()"
+                >
+                    Change name
+                </button>
+
+            </div>
+
+        </section>
+
+    </main>
+
 </div>
 
-<span>
-PickleAI
-</span>
 
-</div>
+<div
+    class="toast"
+    id="toast"
+></div>
 
-
-
-<div class="nav">
-
-
-<button onclick="openTab('chat')">
-
-<div class="icon">
-💬
-</div>
-
-<div class="label">
-Chat
-</div>
-
-</button>
-
-
-
-<button onclick="openTab('brain')">
-
-<div class="icon">
-🧠
-</div>
-
-<div class="label">
-Brain
-</div>
-
-</button>
-
-
-
-<button onclick="openTab('memory')">
-
-<div class="icon">
-◇
-</div>
-
-<div class="label">
-Memory
-</div>
-
-</button>
-
-
-
-<button onclick="openTab('settings')">
-
-<div class="icon">
-⚙
-</div>
-
-<div class="label">
-Settings
-</div>
-
-</button>
-
-
-</div>
-
-
-</div>
-
-
-
-<div class="main">
-
-
-<div class="panel content">
-
-<!-- =====================
-CHAT TAB
-===================== -->
-
-<div id="chat" class="tab active">
-
-<div class="title">
-PickleAI
-</div>
-
-<div class="subtitle">
-Local AI Assistant
-</div>
-
-
-<div id="messages" class="chat-box">
-
-<div class="message ai">
-PickleAI online.
-</div>
-
-</div>
-
-
-
-<div class="input-area">
-
-<input
-id="chatInput"
-placeholder="Ask PickleAI..."
->
-
-
-<button
-class="button"
-onclick="sendMessage()">
-
-Send
-
-</button>
-
-
-</div>
-
-
-</div>
-
-
-
-
-
-<!-- =====================
-BRAIN TAB
-===================== -->
-
-<div id="brain" class="tab">
-
-
-<div class="title">
-Brain
-</div>
-
-
-<div class="subtitle">
-AI information
-</div>
-
-
-
-<div class="card">
-
-<h3>
-Model
-</h3>
-
-<div id="modelName">
-qwen2.5:3b-instruct
-</div>
-
-</div>
-
-
-
-
-<div class="card">
-
-<h3>
-Internet Mode
-</h3>
-
-<div id="internetStatus">
-
-Checking...
-
-</div>
-
-
-</div>
-
-
-
-
-<div class="card">
-
-<h3>
-PC Control
-</h3>
-
-<div>
-
-✓ Windows Control
-
-<br>
-
-✓ App Launcher
-
-<br>
-
-✓ Window Manager
-
-</div>
-
-
-</div>
-
-
-
-<div class="card">
-
-<h3>
-Quick Commands
-</h3>
-
-
-Examples:
-
-<br><br>
-
-open edge
-
-<br>
-
-search google cats
-
-<br>
-
-show windows
-
-<br>
-
-arrange windows
-
-<br>
-
-system status
-
-
-</div>
-
-
-</div>
-
-
-
-
-
-
-
-<!-- =====================
-MEMORY TAB
-===================== -->
-
-
-<div id="memory" class="tab">
-
-
-<div class="title">
-Memory
-</div>
-
-
-<div class="subtitle">
-PickleAI long term memory
-</div>
-
-
-
-<div class="card">
-
-
-<h3>
-Saved Memories
-</h3>
-
-
-<div id="memoryList">
-
-Loading...
-
-</div>
-
-
-</div>
-
-
-
-
-<div class="card">
-
-
-<h3>
-Saved Chats
-</h3>
-
-
-<div id="chatList">
-
-Loading...
-
-</div>
-
-
-</div>
-
-
-
-</div>
-
-
-
-
-
-
-
-
-<!-- =====================
-SETTINGS TAB
-===================== -->
-
-
-<div id="settings" class="tab">
-
-
-<div class="title">
-Settings
-</div>
-
-
-<div class="subtitle">
-PickleAI options
-</div>
-
-
-
-
-<div class="card">
-
-
-<h3>
-Appearance
-</h3>
-
-
-<button
-class="button">
-
-Dark Mode
-
-</button>
-
-
-</div>
-
-
-
-
-
-<div class="card">
-
-
-<h3>
-Chat
-
-</h3>
-
-
-<button
-class="button"
-onclick="clearChat()">
-
-Clear Chat
-
-</button>
-
-
-</div>
-
-
-
-
-
-<div class="card">
-
-
-<h3>
-Safety
-
-</h3>
-
-
-<div>
-
-✓ Confirm dangerous actions
-
-<br>
-
-✓ Local AI first
-
-<br>
-
-✓ No background control
-
-</div>
-
-
-</div>
-
-
-
-</div>
-
-
-
-</div>
-
-
-
-
-<!-- =====================
-RIGHT PANEL
-===================== -->
-
-
-<div class="panel side">
-
-
-<div class="card">
-
-
-<h3>
-Ollama
-</h3>
-
-
-<div id="ollamaStatus">
-
-Local model
-
-</div>
-
-
-</div>
-
-
-
-
-<div class="card">
-
-
-<h3>
-System
-</h3>
-
-
-<div id="systemStatus">
-
-Loading...
-
-</div>
-
-
-</div>
-
-
-
-
-<div class="card">
-
-
-<h3>
-Internet
-</h3>
-
-
-<div id="rightInternet">
-
-Checking...
-
-</div>
-
-
-</div>
-
-
-
-</div>
-
-
-</div>
-
-
-</div>
 
 <script>
+let userName = "";
+let toastTimer;
 
 
-function openTab(name){
+/* ================= NAME ================= */
+
+function loadName() {
+
+    userName =
+        localStorage.getItem(
+            "pickleai_user_name"
+        ) || "";
+
+    if (!userName) {
+
+        document
+            .getElementById("nameScreen")
+            .classList.add("show");
+
+        setTimeout(() => {
+            document
+                .getElementById("nameInput")
+                .focus();
+        }, 100);
+
+        return;
+    }
+
+    applyName();
+}
+
+
+function saveName() {
+
+    const input =
+        document.getElementById("nameInput");
+
+    const name =
+        input.value.trim();
+
+    if (!name) {
+
+        showToast(
+            "Please enter your name."
+        );
+
+        return;
+    }
+
+    userName = name;
+
+    localStorage.setItem(
+        "pickleai_user_name",
+        userName
+    );
 
     document
-    .querySelectorAll(".tab")
-    .forEach(
-        t =>
-        t.classList.remove("active")
+        .getElementById("nameScreen")
+        .classList.remove("show");
+
+    applyName();
+
+    showToast(
+        "Welcome, " + userName
     );
-
-
-    let tab =
-    document.getElementById(name);
-
-
-    if(tab){
-
-        tab.classList.add("active");
-
-    }
-
 }
 
 
+function applyName() {
 
-
-
-// =====================
-// CHAT
-// =====================
-
-
-document
-.getElementById("chatInput")
-.addEventListener(
-"keydown",
-function(e){
-
-    if(e.key === "Enter"){
-
-        sendMessage();
-
-    }
-
-});
-
-
-
-
-
-function addMessage(
-    text,
-    type
-){
-
-    let box =
     document.getElementById(
-        "messages"
-    );
+        "welcomeName"
+    ).textContent =
+        userName || "there";
 
+    document.getElementById(
+        "sidebarName"
+    ).textContent =
+        userName || "Guest";
 
-    box.innerHTML +=
-
-    `
-    <div class="message ${type}">
-    ${text}
-    </div>
-    `;
-
-
-    box.scrollTop =
-    box.scrollHeight;
-
+    document.getElementById(
+        "settingsName"
+    ).textContent =
+        userName || "Guest";
 }
 
 
+function changeName() {
 
-
-
-function sendMessage(){
-
-
-    let input =
     document.getElementById(
-        "chatInput"
-    );
+        "nameInput"
+    ).value =
+        userName;
+
+    document
+        .getElementById("nameScreen")
+        .classList.add("show");
+
+    setTimeout(() => {
+        document
+            .getElementById("nameInput")
+            .focus();
+    }, 100);
+}
 
 
-    let text =
-    input.value.trim();
+/* ================= NAV ================= */
+
+const pageTitles = {
+    chat: "New Chat",
+    memory: "Memory",
+    actions: "Actions",
+    control: "AI Control",
+    system: "System",
+    chats: "Saved Chats",
+    settings: "Settings"
+};
 
 
+function showPage(name, button) {
 
-    if(!text)
-    return;
+    document
+        .querySelectorAll(".page")
+        .forEach(page => {
+            page.classList.remove("active");
+        });
+
+    document
+        .querySelectorAll(".nav-button")
+        .forEach(btn => {
+            btn.classList.remove("active");
+        });
+
+    const page =
+        document.getElementById(
+            "page-" + name
+        );
+
+    if (page) {
+        page.classList.add("active");
+    }
+
+    if (button) {
+        button.classList.add("active");
+    }
+
+    document.getElementById(
+        "pageTitle"
+    ).textContent =
+        pageTitles[name];
+
+    if (name === "memory") {
+        loadMemory();
+    }
+
+    if (name === "system") {
+        loadSystem();
+    }
+
+    if (name === "chats") {
+        loadChats();
+    }
+}
 
 
+/* ================= CHAT ================= */
+
+function addMessage(text, type) {
+
+    const welcome =
+        document.getElementById("welcome");
+
+    if (welcome) {
+        welcome.remove();
+    }
+
+    const container =
+        document.getElementById(
+            "messageContainer"
+        );
+
+    const row =
+        document.createElement("div");
+
+    row.className =
+        "message " + type;
+
+    const avatar =
+        document.createElement("div");
+
+    avatar.className =
+        "avatar";
+
+    avatar.textContent =
+        type === "user"
+            ? "U"
+            : "🥒";
+
+    const bubble =
+        document.createElement("div");
+
+    bubble.className =
+        "bubble";
+
+    bubble.textContent =
+        String(text ?? "");
+
+    row.appendChild(avatar);
+    row.appendChild(bubble);
+
+    container.appendChild(row);
+
+    const messages =
+        document.getElementById("messages");
+
+    messages.scrollTop =
+        messages.scrollHeight;
+}
+
+
+async function sendMessage() {
+
+    const input =
+        document.getElementById(
+            "messageInput"
+        );
+
+    const text =
+        input.value.trim();
+
+    if (!text) {
+        return;
+    }
 
     addMessage(
         text,
         "user"
     );
 
+    input.value = "";
 
-    input.value="";
+    autoResize(input);
+
+    document.getElementById(
+        "aiStatus"
+    ).textContent =
+        "Thinking...";
+
+    try {
+
+        if (
+            !window.pywebview ||
+            !window.pywebview.api
+        ) {
+            throw new Error(
+                "PickleAI WebView API is unavailable."
+            );
+        }
+
+        const prompt =
+            userName
+                ? "[User name: " +
+                    userName +
+                    "]\n" +
+                    text
+                : text;
+
+        const response =
+            await window.pywebview.api
+                .send_message(prompt);
+
+        addMessage(
+            response || "No response received.",
+            "assistant"
+        );
+
+        document.getElementById(
+            "aiStatus"
+        ).textContent =
+            "AI Ready";
+
+    } catch (error) {
+
+        addMessage(
+            "PickleAI error: " +
+            error.message,
+            "assistant"
+        );
+
+        document.getElementById(
+            "aiStatus"
+        ).textContent =
+            "AI Error";
+    }
+}
 
 
+function handleInput(event) {
 
-    if(window.pywebview){
+    if (
+        event.key === "Enter" &&
+        !event.shiftKey
+    ) {
+
+        event.preventDefault();
+
+        sendMessage();
+    }
+
+    autoResize(event.target);
+}
 
 
-        pywebview.api
-        .send_message(text)
+function autoResize(element) {
 
-        .then(
-        reply=>{
+    element.style.height = "auto";
+
+    element.style.height =
+        Math.min(
+            element.scrollHeight,
+            145
+        ) + "px";
+}
 
 
-            addMessage(
-                reply,
-                "ai"
+/* ================= NEW CHAT ================= */
+
+async function startNewChat() {
+
+    try {
+
+        if (
+            window.pywebview &&
+            window.pywebview.api
+        ) {
+
+            await window.pywebview.api
+                .new_chat(
+                    userName
+                        ? userName + "'s New Chat"
+                        : "New Chat"
+                );
+        }
+
+    } catch (error) {
+        console.log(error);
+    }
+
+    const container =
+        document.getElementById(
+            "messageContainer"
+        );
+
+    container.innerHTML = `
+        <div class="welcome" id="welcome">
+
+            <div class="welcome-symbol">
+                <span>🥒</span>
+            </div>
+
+            <h1>
+                Hi, ${escapeHtml(
+                    userName || "there"
+                )}.
+            </h1>
+
+            <p>
+                I'm PickleAI. Your local
+                desktop AI assistant.
+                What can I help you with?
+            </p>
+
+        </div>
+    `;
+}
+
+
+/* ================= MEMORY ================= */
+
+async function loadMemory() {
+
+    const area =
+        document.getElementById(
+            "memoryCards"
+        );
+
+    area.innerHTML =
+        `<div class="card">
+            Loading...
+        </div>`;
+
+    try {
+
+        const data =
+            await window.pywebview.api
+                .get_memory();
+
+        area.innerHTML = "";
+
+        if (!data) {
+
+            area.innerHTML =
+                `<div class="card">
+                    No memories found.
+                </div>`;
+
+            return;
+        }
+
+        if (Array.isArray(data)) {
+
+            if (data.length === 0) {
+
+                area.innerHTML =
+                    `<div class="card">
+                        No memories found.
+                    </div>`;
+
+                return;
+            }
+
+            data.forEach(item => {
+
+                const card =
+                    document.createElement("div");
+
+                card.className = "card";
+
+                card.textContent =
+                    typeof item === "string"
+                        ? item
+                        : JSON.stringify(item);
+
+                area.appendChild(card);
+            });
+
+        } else {
+
+            const card =
+                document.createElement("div");
+
+            card.className = "card";
+
+            card.textContent =
+                JSON.stringify(data);
+
+            area.appendChild(card);
+        }
+
+    } catch {
+
+        area.innerHTML =
+            `<div class="card">
+                Unable to load memory.
+            </div>`;
+    }
+}
+
+
+/* ================= SYSTEM ================= */
+
+async function loadSystem() {
+
+    try {
+
+        const result =
+            await window.pywebview.api
+                .get_system_status();
+
+        document.getElementById(
+            "systemStatus"
+        ).textContent =
+            typeof result === "string"
+                ? result
+                : (
+                    result?.status ||
+                    "Available"
+                );
+
+    } catch {
+
+        document.getElementById(
+            "systemStatus"
+        ).textContent =
+            "Unavailable";
+    }
+
+
+    try {
+
+        const result =
+            await window.pywebview.api
+                .internet_status();
+
+        const element =
+            document.getElementById(
+                "internetStatus"
             );
 
+        if (
+            result &&
+            result.online
+        ) {
 
-        });
+            element.textContent =
+                "Online";
 
+            element.className =
+                "card-value green";
 
-    }
+        } else {
 
-}
+            element.textContent =
+                result?.status ||
+                "Offline";
 
+            element.className =
+                "card-value yellow";
+        }
 
-
-
-
-
-
-// =====================
-// MEMORY
-// =====================
-
-
-async function loadMemory(){
-
-
-    if(!window.pywebview)
-    return;
-
-
-
-    let data =
-    await pywebview.api.get_memory();
-
-
-
-    let list =
-    document.getElementById(
-        "memoryList"
-    );
-
-
-    list.innerHTML="";
-
-
-
-    data.memories.forEach(
-    m=>{
-
-
-        list.innerHTML +=
-
-        `
-        <div class="card">
-        ${m}
-        </div>
-        `;
-
-
-    });
-
-
-
-    let chats =
-    document.getElementById(
-        "chatList"
-    );
-
-
-    chats.innerHTML="";
-
-
-
-    data.chats.forEach(
-    c=>{
-
-
-        chats.innerHTML +=
-
-        `
-        <div class="card">
-
-        💬 ${c[1]}
-
-        </div>
-        `;
-
-
-    });
-
-
-
-}
-
-
-
-
-
-
-
-// =====================
-// STATUS
-// =====================
-
-
-async function updateStatus(){
-
-
-    if(!window.pywebview)
-    return;
-
-
-
-    try{
-
-
-        let status =
-        await pywebview.api
-        .get_system_status();
-
-
-
-        document.getElementById(
-            "systemStatus"
-        ).innerHTML =
-
-
-        `
-        CPU:
-        ${status.cpu}%
-
-
-        <br>
-
-
-        RAM:
-        ${status.ram}%
-
-
-        <br>
-
-
-        Disk:
-        ${status.disk}%
-
-        `;
-
-
-
-    }
-
-    catch(e){
-
-
-        document.getElementById(
-            "systemStatus"
-        ).innerHTML =
-        "Offline";
-
-
-    }
-
-
-
-}
-
-
-
-
-
-async function updateInternet(){
-
-
-    if(!window.pywebview)
-    return;
-
-
-
-    try{
-
-
-        let data =
-        await pywebview.api
-        .internet_status();
-
-
+    } catch {
 
         document.getElementById(
             "internetStatus"
-        ).innerHTML =
-        data.status;
-
-
-
-        document.getElementById(
-            "rightInternet"
-        ).innerHTML =
-        data.status;
-
-
-
+        ).textContent =
+            "Unavailable";
     }
-
-    catch{
-
-
-        document.getElementById(
-            "internetStatus"
-        ).innerHTML =
-        "Unavailable";
-
-
-    }
-
-
 }
 
 
+/* ================= CHATS ================= */
 
+async function loadChats() {
 
+    const area =
+        document.getElementById(
+            "chatCards"
+        );
 
+    area.innerHTML =
+        `<div class="card">
+            Loading...
+        </div>`;
 
-function clearChat(){
+    try {
 
+        const chats =
+            await window.pywebview.api
+                .get_saved_chats();
 
-    document.getElementById(
-        "messages"
-    ).innerHTML =
+        area.innerHTML = "";
 
+        if (
+            !chats ||
+            (
+                Array.isArray(chats) &&
+                chats.length === 0
+            )
+        ) {
 
-    `
-    <div class="message ai">
-    Chat cleared.
-    </div>
-    `;
+            area.innerHTML =
+                `<div class="card">
+                    No saved chats.
+                </div>`;
 
+            return;
+        }
 
+        if (Array.isArray(chats)) {
+
+            chats.forEach(chat => {
+
+                const card =
+                    document.createElement("div");
+
+                card.className = "card";
+
+                card.textContent =
+                    typeof chat === "string"
+                        ? chat
+                        : (
+                            chat.title ||
+                            chat.name ||
+                            "Saved Chat"
+                        );
+
+                area.appendChild(card);
+            });
+        }
+
+    } catch {
+
+        area.innerHTML =
+            `<div class="card">
+                Unable to load chats.
+            </div>`;
+    }
 }
 
 
+/* ================= VOICE ================= */
+
+function voiceInput() {
+
+    const Recognition =
+        window.SpeechRecognition ||
+        window.webkitSpeechRecognition;
+
+    if (!Recognition) {
+
+        showToast(
+            "Voice input isn't available."
+        );
+
+        return;
+    }
+
+    const recognition =
+        new Recognition();
+
+    recognition.lang =
+        navigator.language || "en-US";
+
+    recognition.interimResults =
+        false;
+
+    recognition.onstart =
+        () => {
+
+            document.getElementById(
+                "aiStatus"
+            ).textContent =
+                "Listening...";
+        };
+
+    recognition.onresult =
+        event => {
+
+            const input =
+                document.getElementById(
+                    "messageInput"
+                );
+
+            input.value =
+                event.results[0][0]
+                    .transcript;
+
+            autoResize(input);
+
+            document.getElementById(
+                "aiStatus"
+            ).textContent =
+                "AI Ready";
+        };
+
+    recognition.onerror =
+        () => {
+
+            document.getElementById(
+                "aiStatus"
+            ).textContent =
+                "AI Ready";
+
+            showToast(
+                "Voice input failed."
+            );
+        };
+
+    recognition.start();
+}
 
 
+/* ================= TOAST ================= */
+
+function showToast(text) {
+
+    const toast =
+        document.getElementById(
+            "toast"
+        );
+
+    toast.textContent =
+        text;
+
+    toast.classList.add("show");
+
+    clearTimeout(toastTimer);
+
+    toastTimer =
+        setTimeout(
+            () => {
+                toast.classList.remove(
+                    "show"
+                );
+            },
+            2600
+        );
+}
 
 
-// =====================
-// START
-// =====================
+/* ================= ESCAPE ================= */
+
+function escapeHtml(value) {
+
+    return String(value)
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#039;");
+}
 
 
-window.onload=function(){
+/* ================= READY ================= */
 
+window.addEventListener(
+    "pywebviewready",
+    () => {
 
-    openTab(
-        "chat"
-    );
-
-
-    loadMemory();
-
-
-    updateStatus();
-
-
-    updateInternet();
-
-
-};
-
-
-
-
-setInterval(
-    updateStatus,
-    3000
+        document.getElementById(
+            "aiStatus"
+        ).textContent =
+            "AI Ready";
+    }
 );
 
 
+/* ================= KEYBOARD ================= */
 
-setInterval(
-    updateInternet,
-    10000
+document.addEventListener(
+    "keydown",
+    event => {
+
+        if (
+            event.key === "Enter" &&
+            document.activeElement.id ===
+                "nameInput"
+        ) {
+
+            event.preventDefault();
+
+            saveName();
+        }
+    }
 );
 
 
+/* ================= START ================= */
 
+document.addEventListener(
+    "DOMContentLoaded",
+    () => {
+
+        loadName();
+
+        const input =
+            document.getElementById(
+                "messageInput"
+            );
+
+        if (input) {
+            autoResize(input);
+        }
+    }
+);
 </script>
 
-
 </body>
-
 </html>
