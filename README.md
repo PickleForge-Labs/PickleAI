@@ -41,15 +41,16 @@ No sending your conversations to a hosted AI service for the core assistant.
 
 # 📥 Download PickleAI
 
-## 🥒 PickleAI v2.0.0 — Latest Release
+## 🥒 PickleAI — Latest Release
 
-**Windows x64 • Portable • 19.4 MB**
+**Windows x64 • Portable • Small**
 
 ### 👉 Download PickleAI
 
 **[⬇️ Download the Latest Release](../../releases/latest)**
 
 No installer required.
+**Linux Support Coming At 100 Downloads**
 
 **Download → Extract → Run → Chat**
 
@@ -86,7 +87,7 @@ The core assistant doesn't require a hosted AI API or monthly AI subscription.
 
 ### ⚡ Lightweight
 
-The v2.0.0 portable release is only **19.4 MB**.
+The Release is **Portable And Small**.
 
 ### 🆓 Open Source
 
@@ -98,7 +99,7 @@ PickleAI is designed to be a simple, approachable local AI desktop experience in
 
 ---
 
-# ✨ PickleAI v2
+# ✨ PickleAI v2 - Coming Soon
 
 Version 2 brings a completely redesigned PickleAI experience.
 
@@ -111,14 +112,16 @@ Version 2 brings a completely redesigned PickleAI experience.
 * 🥒 Updated PickleAI branding
 * 👋 New welcome experience
 
-## 🧠 AI Features
+## 🧠 Better AI Features
 
-* 💬 AI conversations
-* 🧠 Memory
-* ⚡ Actions
-* 🖥️ AI Control
-* 🛠️ Desktop interaction
-
+* 💬 Better AI conversations
+* 🧠 Better Memory
+* ⚡ Better Actions
+* 🖥️ Better AI Control
+* 🛠️ Better Desktop interaction
+* And A Model Picker Pick **Any** Local Model To Use.
+* Also Now Supports **Custom Endpoints**
+**Coming Soon From PickleAI**
 ---
 
 # 🖥️ PC Control
