@@ -50,6 +50,7 @@ No sending your conversations to a hosted AI service for the core assistant.
 **[⬇️ Download the Latest Release](../../releases/latest)**
 
 No installer required.
+
 **Linux Support Coming At 100 Downloads**
 
 **Download → Extract → Run → Chat**
