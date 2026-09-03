@@ -120,8 +120,7 @@ Version 2 brings a completely redesigned PickleAI experience.
 * ⚡ Better Actions
 * 🖥️ Better AI Control
 * 🛠️ Better Desktop interaction
-* And A Model Picker Pick **Any** Local Model To Use.
-* Also Now Supports **Custom Endpoints**
+* 🤖 A Custom AI Model Built For PickleAI
 **Coming Soon From PickleAI**
 ---
 
