@@ -221,7 +221,7 @@ Download the latest PickleAI release from GitHub.
 Extract:
 
 ```text
-PickleAI-v2.0.0-Win64-Portable.zip
+PickleAI.zip
 ```
 
 ## 5. Launch PickleAI
