@@ -121,6 +121,7 @@ Version 2 brings a completely redesigned PickleAI experience.
 * 🖥️ Better AI Control
 * 🛠️ Better Desktop interaction
 * 🤖 A Custom AI Model Built For PickleAI
+
 **Coming Soon From PickleAI**
 ---
 
